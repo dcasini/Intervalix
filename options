@@ -1,0 +1,33 @@
+Options Page:
+Interval Prefs   				 [section 1]
+	Random Seq or Sim (default)
+	Seq only
+	Sim only
+	Seq, then Sim
+	Sim, then Seq
+
+Sequential Prefs				[section 2]
+	Random Lo-Hi or Hi-Lo (default)
+	Lo-Hi only
+	Hi-Lo only
+	Lo-Hi, then Hi-Lo
+	Hi-Lo, then Lo-Hi
+
+Display Prefs
+
+	Name Prefs				[section 3]
+		Full    (default)
+		Abbrev
+
+(no portrait/landscape/rotation option)
+
+	Answer Prefs				[section 4]
+		Alert
+		Label   (default)
+
+	Play Prefs				[section 5]
+		User Selection (default)
+		Correct Answer
+		Both
+		Neither
+

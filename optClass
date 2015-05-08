@@ -1,0 +1,531 @@
+see ‘FULL NAME BLUE BORDER’
+
+//  myTVControl.m  //  testStoryBoard  //  Created by David Casini on 4/7/15.
+#import "myTVControl.h"
+#import "globalSettingsObject.h"
+
+@interface myTVControl ()
+
+@property NSInteger checkedRowS0;
+@property NSInteger previousCheckS0;
+@property NSInteger checkedRowS1;
+@property NSInteger previousCheckS1;
+
+- (void)changePref:(NSIndexPath *)indexPath checked:(NSInteger)checked unchecked:(NSInteger)unchecked;
+
+@end
+
+@implementation myTVControl
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.optionsPageSettings = [[globalSettingsObject alloc]init];  //it will call initWithCoder to restore prior settings
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 4;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    NSInteger numRows;
+    
+    switch (section) {
+        case 0:
+            numRows = 5;  //'interval prefs' section
+            break;
+        case 1:
+            numRows = 5;    //'sequential prefs' section
+            break;
+        case 2:
+            numRows = 2;    //'display prefs' section
+            break;
+        case 3:
+            numRows = 2;    //'answer' prefs' section
+            break;
+        default:
+            break;
+    }
+    
+    return numRows;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setTextAlignment:NSTextAlignmentCenter];
+    
+    NSString *sectionName;
+    switch (section)
+    {
+        case 0:   //5 rows
+            sectionName = @"Interval Preferences";
+            break;
+        case 1:     //5 rows
+            sectionName = @"Sequential Preferences";
+            break;
+        case 2:     //2 rows
+            sectionName = @"Display Preferences";
+            break;
+        case 3:     //4 rows
+            sectionName = @"Answer Preferences";
+            break;
+        default:
+            sectionName = @"";
+            break;
+    }
+    return sectionName;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForHeaderInSection:(NSInteger)section
+{
+    CGFloat height;
+    if (section == 0) {
+        height = 30;
+    }
+    else height = 20;
+    
+    return height;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *aCell = [tableView dequeueReusableCellWithIdentifier:@"useLess" forIndexPath:indexPath];
+    
+    if (indexPath.section == 0){                //5 rows
+        //load these from an array?
+        switch (indexPath.row) {
+            case 0:
+                aCell.textLabel.text = @"Sequential Only";
+                if (self.optionsPageSettings.playSequentialOnly) {
+                   // aCell.accessoryType =  [self isChecked:indexPath];
+                   // [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+                    aCell.accessoryType = UITableViewCellAccessoryCheckmark; //how to handle saved prefs?
+                    self.checkedRowS0 = indexPath.row;
+                    self.previousCheckS0 = indexPath.row;
+                }
+                break;
+            case 1:
+                aCell.textLabel.text = @"Simultaneous Only";
+                if (self.optionsPageSettings.playSimultaneousOnly) {
+                   // aCell.accessoryType =  [self isChecked:indexPath];
+                    aCell.accessoryType = UITableViewCellAccessoryCheckmark; //how to handle saved prefs?
+                    self.checkedRowS0 = indexPath.row;
+                    self.previousCheckS0 = indexPath.row;
+                }
+                break;
+            case 2:
+                aCell.textLabel.text = @"Sequential, then Simultaneous";
+                if (self.optionsPageSettings.playSequentialThenSimultaneous) {
+                   // aCell.accessoryType =  [self isChecked:indexPath];
+                    aCell.accessoryType = UITableViewCellAccessoryCheckmark; //how to handle saved prefs?
+                    self.checkedRowS0 = indexPath.row;
+                    self.previousCheckS0 = indexPath.row;
+                }
+                break;
+            case 3:
+                aCell.textLabel.text = @"Simultaneous, then Sequential";
+                if (self.optionsPageSettings.playSimultaneousThenSequential) {
+                   // aCell.accessoryType =  [self isChecked:indexPath];
+                    aCell.accessoryType = UITableViewCellAccessoryCheckmark; //how to handle saved prefs?
+                    self.checkedRowS0 = indexPath.row;
+                    self.previousCheckS0 = indexPath.row;
+                }
+                break;
+            case 4:
+              aCell = [aCell initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"default"];
+                aCell.textLabel.text = @"Random Sequential or Simultaneous";
+                aCell.detailTextLabel.text = @"default";
+                if (self.optionsPageSettings.playRandomSequentialOrSimultaneous) {
+                  //  aCell.accessoryType =  [self isChecked:indexPath];
+                    aCell.accessoryType = UITableViewCellAccessoryCheckmark; //how to handle saved prefs?
+                    self.checkedRowS0 = indexPath.row;
+                    self.previousCheckS0 = indexPath.row;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    if (indexPath.section == 1){                //5 rows
+       //load these from an array?
+        switch (indexPath.row) {
+            case 0:
+                aCell.textLabel.text = @"Low to High Only";
+                if (self.optionsPageSettings.breakUpOnly) {
+                   // aCell.accessoryType =  [self isChecked:indexPath];
+                    aCell.accessoryType = UITableViewCellAccessoryCheckmark; //how to handle saved prefs?
+                    self.checkedRowS1 = indexPath.row;
+                    self.previousCheckS1 = indexPath.row;
+                }
+                  //  aCell.accessoryType = UITableViewCellAccessoryNone;
+                break;
+            case 1:
+                aCell.textLabel.text = @"High to Low Only";
+                if (self.optionsPageSettings.breakDownOnly) {
+                   // aCell.accessoryType =  [self isChecked:indexPath];
+                    aCell.accessoryType = UITableViewCellAccessoryCheckmark; //how to handle saved prefs?
+                    self.checkedRowS1 = indexPath.row;
+                    self.previousCheckS1 = indexPath.row;
+                }
+                break;
+            case 2:
+                aCell.textLabel.text = @"Low-High, then High-Low";
+                if (self.optionsPageSettings.breakUpThenDown) {
+                    //aCell.accessoryType =  [self isChecked:indexPath];
+                    aCell.accessoryType = UITableViewCellAccessoryCheckmark; //how to handle saved prefs?
+                    self.checkedRowS1 = indexPath.row;
+                    self.previousCheckS1 = indexPath.row;
+                }
+                break;
+            case 3:
+                aCell.textLabel.text = @"High-Low, then Low-High";
+                if (self.optionsPageSettings.breakDownThenUp) {
+                    //aCell.accessoryType =  [self isChecked:indexPath];
+                    aCell.accessoryType = UITableViewCellAccessoryCheckmark; //how to handle saved prefs?
+                    self.checkedRowS1 = indexPath.row;
+                    self.previousCheckS1 = indexPath.row;
+                }
+                break;
+            case 4:
+               aCell = [aCell initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"default"];
+                aCell.textLabel.text = @"Random Low-High or High-Low";
+                aCell.detailTextLabel.text = @"default";
+                if (self.optionsPageSettings.breakRandomUpOrDown) {
+                   // aCell.accessoryType =  [self isChecked:indexPath];
+                    aCell.accessoryType = UITableViewCellAccessoryCheckmark; //how to handle saved prefs?
+                    self.checkedRowS1 = indexPath.row;
+                    self.previousCheckS1 = indexPath.row;
+                }
+//                aCell.accessoryType = UITableViewCellAccessoryCheckmark; //how to handle saved prefs?
+//                self.checkedRowS1 = indexPath.row;
+//                self.previousCheckS1 = indexPath.row;
+//                _optionsPageSettings.breakRandomUpOrDown = true;
+                break;
+            default:
+                break;
+        }
+    }
+    if (indexPath.section == 2){                //2 rows
+        
+        UITableViewCell *segCell = [tableView dequeueReusableCellWithIdentifier:@"forSegments" forIndexPath:indexPath];
+        
+        NSArray *nameOptions = [[NSArray alloc]initWithObjects:@"Full Interval Names",@"Abbreviated Interval Names",nil];
+        UISegmentedControl *nameSelector = [[UISegmentedControl alloc]initWithItems:nameOptions];
+        
+        NSArray *displayOptions = [[NSArray alloc]initWithObjects:@"Portrait",@"Landscape", @"Rotation" ,nil];
+        UISegmentedControl *displaySelector = [[UISegmentedControl alloc]initWithItems:displayOptions];
+        //[displaySelector setEnabled:YES forSegmentAtIndex:0];
+        
+        switch (indexPath.row) {
+            case 0:
+                [displaySelector setFrame:[aCell bounds]];
+                [[segCell contentView] addSubview:nameSelector] ;
+                [displaySelector setEnabled:YES forSegmentAtIndex:0];
+                //[displaySelector setSelectedSegmentIndex:0]; //isEnabledForSegmentAtIndex:0];
+                [nameSelector addTarget:self
+                                 action:@selector(intervalNameStyle:)
+                           forControlEvents:UIControlEventValueChanged];
+                break;
+            case 1:
+                [displaySelector setFrame:[aCell bounds]];
+                [[segCell contentView] addSubview:displaySelector] ;
+                // [displaySelector isEnabledForSegmentAtIndex:1];
+                [displaySelector addTarget:self
+                                     action:@selector(displayPref:)
+                           forControlEvents:UIControlEventValueChanged];
+                break;
+            default:
+                break;
+        }
+        
+        
+        
+    }
+    if (indexPath.section == 3){                //4 rows  << --- fix this!!
+        
+            UITableViewCell *segCell = [tableView dequeueReusableCellWithIdentifier:@"forSegments" forIndexPath:indexPath];
+            
+            NSArray *answerNotifyOptions = [[NSArray alloc]initWithObjects:@"Alert",@"Label",nil];
+            UISegmentedControl *answerNotifySelector = [[UISegmentedControl alloc]initWithItems:answerNotifyOptions];
+            
+            NSArray *playAnswerPrefOptions = [[NSArray alloc]initWithObjects:@"User Selection",@"Correct Answer", @"Both" ,nil];
+            UISegmentedControl *playAnswerPrefSelector = [[UISegmentedControl alloc]initWithItems:playAnswerPrefOptions];
+            //[displaySelector setEnabled:YES forSegmentAtIndex:0];
+            
+            switch (indexPath.row) {
+                case 0:
+                    [answerNotifySelector setFrame:[aCell bounds]];
+                    [[segCell contentView] addSubview:answerNotifySelector] ;
+                    [answerNotifySelector setEnabled:YES forSegmentAtIndex:0];
+                    //[displaySelector setSelectedSegmentIndex:0]; //isEnabledForSegmentAtIndex:0];
+                    [answerNotifySelector addTarget:self
+                                     action:@selector(answerNotifyStyle:)
+                           forControlEvents:UIControlEventValueChanged];
+                    break;
+                case 1:
+                    [playAnswerPrefSelector setFrame:[aCell bounds]];
+                    [[segCell contentView] addSubview:playAnswerPrefSelector] ;
+                    // [displaySelector isEnabledForSegmentAtIndex:1];
+                    [playAnswerPrefSelector addTarget:self
+                                        action:@selector(playAnswerPref:)
+                              forControlEvents:UIControlEventValueChanged];
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        
+       //this needs more thought about options
+//        switch (indexPath.row) {
+//            case 0:
+//                 aCell.textLabel.text = @"Alert";
+//                break;
+//            case 1:
+//                aCell.textLabel.text = @"Label";
+//                break;
+//            case 2:
+//                aCell.textLabel.text = @"Play User Selection";
+//                break;
+//            case 3:
+//                aCell.textLabel.text = @"Play Correct Answer";
+//                break;
+//                
+//            default:
+//                break;
+//        }
+//    }
+//    
+//    
+   return aCell;
+}
+
+- (IBAction)DoneButton:(id)sender {
+    
+    [self.delegate myTVControlDidFinish:self];
+}
+
+- (void)intervalNameStyle:(UISegmentedControl *)segment
+{
+    if(segment.selectedSegmentIndex == 0)
+    {
+        self.optionsPageSettings.intervalNameStyle = false;
+    }
+    if(segment.selectedSegmentIndex == 1)
+    {
+        self.optionsPageSettings.intervalNameStyle = true;
+    }
+}
+
+- (void)displayPref:(UISegmentedControl *)segment
+{
+    if(segment.selectedSegmentIndex == 0)
+    {
+        self.optionsPageSettings.displayLockPortrait = true;
+        self.optionsPageSettings.displayLockLandscape = false;
+        self.optionsPageSettings.displayAllowRotation = false;
+    }
+    if(segment.selectedSegmentIndex == 1)
+    {
+        self.optionsPageSettings.displayLockPortrait = false;
+        self.optionsPageSettings.displayLockLandscape = true;
+        self.optionsPageSettings.displayAllowRotation = false;
+    }
+    if(segment.selectedSegmentIndex == 2)
+    {
+        self.optionsPageSettings.displayLockPortrait = false;
+        self.optionsPageSettings.displayLockLandscape = false;
+        self.optionsPageSettings.displayAllowRotation = true;    //this will be the default...
+    }
+}
+
+
+- (void)answerNotifyStyle:(UISegmentedControl *)segment
+{
+    if(segment.selectedSegmentIndex == 0)
+    {
+        self.optionsPageSettings.answerStyleAlert = true;
+       // self.optionsPageSettings.answerStyleAlert = false;
+        
+    }
+    if(segment.selectedSegmentIndex == 1)
+    {
+       self.optionsPageSettings.answerStyleAlert = false;
+        
+//        self.optionsPageSettings.playUserAnswer = true;
+//        self.optionsPageSettings.playCorrectAnswer = false;
+//       self.optionsPageSettings.playUserAndCorrect = false
+//        
+//        //only one of these 3 will be true
+//        @property (nonatomic) BOOL playUserAnswer;
+//        @property (nonatomic) BOOL playCorrectAnswer;
+//        @property (nonatomic) BOOL playUserAndCorrect;
+    }
+}
+
+- (void)playAnswerPref:(UISegmentedControl *)segment
+{
+    if(segment.selectedSegmentIndex == 0)
+    {
+        self.optionsPageSettings.playUserAnswer = true;   //        //only one of these 3 will be true
+        self.optionsPageSettings.playCorrectAnswer = false;
+        self.optionsPageSettings.playUserAndCorrect = false;
+        
+    }
+    if(segment.selectedSegmentIndex == 1)
+    {
+        self.optionsPageSettings.playUserAnswer = false;
+        self.optionsPageSettings.playCorrectAnswer = true;
+        self.optionsPageSettings.playUserAndCorrect = false;
+    }
+    if(segment.selectedSegmentIndex == 2)
+    {
+        self.optionsPageSettings.playUserAnswer = false;
+        self.optionsPageSettings.playCorrectAnswer = false;
+        self.optionsPageSettings.playUserAndCorrect = true;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+  //  NSLog(@"indexPath.section = %d, indexPath.row = %d", indexPath.section, indexPath.row);
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+        
+        if (self.previousCheckS0 == indexPath.row) {  //no changes
+            return;
+        }
+        
+        NSIndexPath *oldPathS0 = [NSIndexPath indexPathForRow:self.previousCheckS0 inSection:0];
+        
+        UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        newCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.checkedRowS0 = indexPath.row;
+        
+        UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:oldPathS0];
+        oldCell.accessoryType = UITableViewCellAccessoryNone;
+        
+        [self changePref:indexPath checked:self.checkedRowS0 unchecked:self.previousCheckS0];
+
+        self.previousCheckS0 = self.checkedRowS0;
+    }
+    
+    if (indexPath.section == 1) {
+        
+        if (self.previousCheckS1 == indexPath.row) {  //no change
+            return;
+        }
+        
+        NSIndexPath *oldPathS1 = [NSIndexPath indexPathForRow:self.previousCheckS1 inSection:1];
+        
+        UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        newCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.checkedRowS1 = indexPath.row;
+        
+        UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:oldPathS1];
+        oldCell.accessoryType = UITableViewCellAccessoryNone;
+        
+        [self changePref:indexPath checked:self.checkedRowS1 unchecked:self.previousCheckS1];
+        
+        
+        self.previousCheckS1 = self.checkedRowS1;
+    }
+    
+    [self.optionsPageSettings saveChanges];   //if ANY row is selected, state is save even if there was no change
+}
+
+- (void)changePref:(NSIndexPath *)indexPath checked:(NSInteger)checked unchecked:(NSInteger)unchecked
+{
+    if (indexPath.section == 0) {
+        switch (checked) {
+            case 0:
+                _optionsPageSettings.playSequentialOnly = true;
+                break;
+            case 1:
+                _optionsPageSettings.playSimultaneousOnly = true;
+                break;
+            case 2:
+                _optionsPageSettings.playSequentialThenSimultaneous = true;
+                break;
+            case 3:
+                _optionsPageSettings.playSimultaneousThenSequential = true;
+                break;
+            case 4:
+                _optionsPageSettings.playRandomSequentialOrSimultaneous = true;
+                break;
+            default:
+                break;
+        }
+        switch (unchecked) {
+            case 0:
+                _optionsPageSettings.playSequentialOnly = false;
+                break;
+            case 1:
+                _optionsPageSettings.playSimultaneousOnly = false;
+                break;
+            case 2:
+                _optionsPageSettings.playSequentialThenSimultaneous = false;
+                break;
+            case 3:
+                _optionsPageSettings.playSimultaneousThenSequential = false;
+                break;
+            case 4:
+                _optionsPageSettings.playRandomSequentialOrSimultaneous = false;
+                break;
+            default:
+                break;
+        }
+    }
+    if (indexPath.section == 1) {
+        switch (checked) {
+            case 0:
+                _optionsPageSettings.breakUpOnly = true;
+                break;
+            case 1:
+                _optionsPageSettings.breakDownOnly = true;
+                break;
+            case 2:
+                _optionsPageSettings.breakUpThenDown = true;
+                break;
+            case 3:
+                _optionsPageSettings.breakDownThenUp = true;
+                break;
+            case 4:
+                _optionsPageSettings.breakRandomUpOrDown = true;
+                break;
+            default:
+                break;
+        }
+        switch (unchecked) {
+            case 0:
+                _optionsPageSettings.breakUpOnly = false;
+                break;
+            case 1:
+                _optionsPageSettings.breakDownOnly = false;
+                break;
+            case 2:
+                _optionsPageSettings.breakUpThenDown = false;
+                break;
+            case 3:
+                _optionsPageSettings.breakDownThenUp = false;
+                break;
+            case 4:
+                _optionsPageSettings.breakRandomUpOrDown = false;
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+@end
+
+

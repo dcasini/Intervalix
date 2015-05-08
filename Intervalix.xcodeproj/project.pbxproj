@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D24ABABF1AEF4B7500F4A5E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D24ABABE1AEF4B7500F4A5E0 /* main.m */; };
+		D24ABAC21AEF4B7500F4A5E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D24ABAC11AEF4B7500F4A5E0 /* AppDelegate.m */; };
+		D24ABACA1AEF4B7500F4A5E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D24ABAC91AEF4B7500F4A5E0 /* Images.xcassets */; };
+		D24ABACD1AEF4B7500F4A5E0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24ABACB1AEF4B7500F4A5E0 /* LaunchScreen.xib */; };
+		D24ABAD91AEF4B7500F4A5E0 /* IntervalixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D24ABAD81AEF4B7500F4A5E0 /* IntervalixTests.m */; };
+		D24ABAE51AEF4C8A00F4A5E0 /* MainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24ABAE31AEF4C8A00F4A5E0 /* MainScreenViewController.m */; };
+		D24ABAE61AEF4C8A00F4A5E0 /* MainScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24ABAE41AEF4C8A00F4A5E0 /* MainScreenViewController.xib */; };
+		D24ABAEA1AEF4D7900F4A5E0 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24ABAE81AEF4D7900F4A5E0 /* OptionsViewController.m */; };
+		D24ABAEB1AEF4D7900F4A5E0 /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24ABAE91AEF4D7900F4A5E0 /* OptionsViewController.xib */; };
+		D29E63F81AF1971E00C0B47C /* globalSettingsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D29E63F71AF1971E00C0B47C /* globalSettingsObject.m */; };
+		D2B12DCE1AF91DB300B2DE7F /* customButton1.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B12DCD1AF91DB300B2DE7F /* customButton1.m */; };
+		D2B12DD11AF91F9000B2DE7F /* IntervalClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B12DD01AF91F9000B2DE7F /* IntervalClass.m */; };
+		D2B12DED1AF9225700B2DE7F /* 52_E_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DD31AF9225700B2DE7F /* 52_E_2.mp3 */; };
+		D2B12DEE1AF9225700B2DE7F /* 53_F_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DD41AF9225700B2DE7F /* 53_F_2.mp3 */; };
+		D2B12DEF1AF9225700B2DE7F /* 54_Gb_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DD51AF9225700B2DE7F /* 54_Gb_2.mp3 */; };
+		D2B12DF01AF9225700B2DE7F /* 55_G_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DD61AF9225700B2DE7F /* 55_G_2.mp3 */; };
+		D2B12DF11AF9225700B2DE7F /* 56_Ab_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DD71AF9225700B2DE7F /* 56_Ab_2.mp3 */; };
+		D2B12DF21AF9225700B2DE7F /* 57_A_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DD81AF9225700B2DE7F /* 57_A_2.mp3 */; };
+		D2B12DF31AF9225700B2DE7F /* 58_Bb_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DD91AF9225700B2DE7F /* 58_Bb_2.mp3 */; };
+		D2B12DF41AF9225700B2DE7F /* 59_B_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DDA1AF9225700B2DE7F /* 59_B_2.mp3 */; };
+		D2B12DF51AF9225700B2DE7F /* 60_C_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DDB1AF9225700B2DE7F /* 60_C_3.mp3 */; };
+		D2B12DF61AF9225700B2DE7F /* 61_Db_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DDC1AF9225700B2DE7F /* 61_Db_3.mp3 */; };
+		D2B12DF71AF9225700B2DE7F /* 62_D_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DDD1AF9225700B2DE7F /* 62_D_3.mp3 */; };
+		D2B12DF81AF9225700B2DE7F /* 63_Eb_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DDE1AF9225700B2DE7F /* 63_Eb_3.mp3 */; };
+		D2B12DF91AF9225700B2DE7F /* 64_E_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DDF1AF9225700B2DE7F /* 64_E_3.mp3 */; };
+		D2B12DFA1AF9225700B2DE7F /* 65_F_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DE01AF9225700B2DE7F /* 65_F_3.mp3 */; };
+		D2B12DFB1AF9225700B2DE7F /* 66_Gb_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DE11AF9225700B2DE7F /* 66_Gb_3.mp3 */; };
+		D2B12DFC1AF9225700B2DE7F /* 67_G_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DE21AF9225700B2DE7F /* 67_G_3.mp3 */; };
+		D2B12DFD1AF9225700B2DE7F /* 68_Ab_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DE31AF9225700B2DE7F /* 68_Ab_3.mp3 */; };
+		D2B12DFE1AF9225700B2DE7F /* 69_A_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DE41AF9225700B2DE7F /* 69_A_3.mp3 */; };
+		D2B12DFF1AF9225700B2DE7F /* 70_Bb_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DE51AF9225700B2DE7F /* 70_Bb_3.mp3 */; };
+		D2B12E001AF9225700B2DE7F /* 71_B_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DE61AF9225700B2DE7F /* 71_B_3.mp3 */; };
+		D2B12E011AF9225700B2DE7F /* 72_C_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DE71AF9225700B2DE7F /* 72_C_4.mp3 */; };
+		D2B12E021AF9225700B2DE7F /* 73_Db_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DE81AF9225700B2DE7F /* 73_Db_4.mp3 */; };
+		D2B12E031AF9225700B2DE7F /* 74_D_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DE91AF9225700B2DE7F /* 74_D_4.mp3 */; };
+		D2B12E041AF9225700B2DE7F /* 75_Eb_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DEA1AF9225700B2DE7F /* 75_Eb_4.mp3 */; };
+		D2B12E051AF9225700B2DE7F /* 76_E_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DEB1AF9225700B2DE7F /* 76_E_4.mp3 */; };
+		D2B12E061AF9225700B2DE7F /* NoteNumbers.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DEC1AF9225700B2DE7F /* NoteNumbers.pdf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D24ABAD31AEF4B7500F4A5E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D24ABAB11AEF4B7400F4A5E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D24ABAB81AEF4B7500F4A5E0;
+			remoteInfo = Intervalix;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D24ABAB91AEF4B7500F4A5E0 /* Intervalix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intervalix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D24ABABD1AEF4B7500F4A5E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D24ABABE1AEF4B7500F4A5E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D24ABAC01AEF4B7500F4A5E0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D24ABAC11AEF4B7500F4A5E0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D24ABAC91AEF4B7500F4A5E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D24ABACC1AEF4B7500F4A5E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		D24ABAD21AEF4B7500F4A5E0 /* IntervalixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntervalixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D24ABAD71AEF4B7500F4A5E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D24ABAD81AEF4B7500F4A5E0 /* IntervalixTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntervalixTests.m; sourceTree = "<group>"; };
+		D24ABAE21AEF4C8A00F4A5E0 /* MainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScreenViewController.h; path = ../MainScreenViewController.h; sourceTree = "<group>"; };
+		D24ABAE31AEF4C8A00F4A5E0 /* MainScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainScreenViewController.m; path = ../MainScreenViewController.m; sourceTree = "<group>"; };
+		D24ABAE41AEF4C8A00F4A5E0 /* MainScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainScreenViewController.xib; path = ../MainScreenViewController.xib; sourceTree = "<group>"; };
+		D24ABAE71AEF4D7900F4A5E0 /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
+		D24ABAE81AEF4D7900F4A5E0 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		D24ABAE91AEF4D7900F4A5E0 /* OptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionsViewController.xib; sourceTree = "<group>"; };
+		D29E63F61AF1971E00C0B47C /* globalSettingsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globalSettingsObject.h; sourceTree = "<group>"; };
+		D29E63F71AF1971E00C0B47C /* globalSettingsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = globalSettingsObject.m; sourceTree = "<group>"; };
+		D2B12DCC1AF91DB300B2DE7F /* customButton1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customButton1.h; sourceTree = "<group>"; };
+		D2B12DCD1AF91DB300B2DE7F /* customButton1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customButton1.m; sourceTree = "<group>"; };
+		D2B12DCF1AF91F9000B2DE7F /* IntervalClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntervalClass.h; sourceTree = "<group>"; };
+		D2B12DD01AF91F9000B2DE7F /* IntervalClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntervalClass.m; sourceTree = "<group>"; };
+		D2B12DD31AF9225700B2DE7F /* 52_E_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 52_E_2.mp3; sourceTree = "<group>"; };
+		D2B12DD41AF9225700B2DE7F /* 53_F_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 53_F_2.mp3; sourceTree = "<group>"; };
+		D2B12DD51AF9225700B2DE7F /* 54_Gb_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 54_Gb_2.mp3; sourceTree = "<group>"; };
+		D2B12DD61AF9225700B2DE7F /* 55_G_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 55_G_2.mp3; sourceTree = "<group>"; };
+		D2B12DD71AF9225700B2DE7F /* 56_Ab_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 56_Ab_2.mp3; sourceTree = "<group>"; };
+		D2B12DD81AF9225700B2DE7F /* 57_A_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 57_A_2.mp3; sourceTree = "<group>"; };
+		D2B12DD91AF9225700B2DE7F /* 58_Bb_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 58_Bb_2.mp3; sourceTree = "<group>"; };
+		D2B12DDA1AF9225700B2DE7F /* 59_B_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 59_B_2.mp3; sourceTree = "<group>"; };
+		D2B12DDB1AF9225700B2DE7F /* 60_C_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 60_C_3.mp3; sourceTree = "<group>"; };
+		D2B12DDC1AF9225700B2DE7F /* 61_Db_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 61_Db_3.mp3; sourceTree = "<group>"; };
+		D2B12DDD1AF9225700B2DE7F /* 62_D_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 62_D_3.mp3; sourceTree = "<group>"; };
+		D2B12DDE1AF9225700B2DE7F /* 63_Eb_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 63_Eb_3.mp3; sourceTree = "<group>"; };
+		D2B12DDF1AF9225700B2DE7F /* 64_E_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 64_E_3.mp3; sourceTree = "<group>"; };
+		D2B12DE01AF9225700B2DE7F /* 65_F_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 65_F_3.mp3; sourceTree = "<group>"; };
+		D2B12DE11AF9225700B2DE7F /* 66_Gb_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 66_Gb_3.mp3; sourceTree = "<group>"; };
+		D2B12DE21AF9225700B2DE7F /* 67_G_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 67_G_3.mp3; sourceTree = "<group>"; };
+		D2B12DE31AF9225700B2DE7F /* 68_Ab_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 68_Ab_3.mp3; sourceTree = "<group>"; };
+		D2B12DE41AF9225700B2DE7F /* 69_A_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 69_A_3.mp3; sourceTree = "<group>"; };
+		D2B12DE51AF9225700B2DE7F /* 70_Bb_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 70_Bb_3.mp3; sourceTree = "<group>"; };
+		D2B12DE61AF9225700B2DE7F /* 71_B_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 71_B_3.mp3; sourceTree = "<group>"; };
+		D2B12DE71AF9225700B2DE7F /* 72_C_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 72_C_4.mp3; sourceTree = "<group>"; };
+		D2B12DE81AF9225700B2DE7F /* 73_Db_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 73_Db_4.mp3; sourceTree = "<group>"; };
+		D2B12DE91AF9225700B2DE7F /* 74_D_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 74_D_4.mp3; sourceTree = "<group>"; };
+		D2B12DEA1AF9225700B2DE7F /* 75_Eb_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 75_Eb_4.mp3; sourceTree = "<group>"; };
+		D2B12DEB1AF9225700B2DE7F /* 76_E_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 76_E_4.mp3; sourceTree = "<group>"; };
+		D2B12DEC1AF9225700B2DE7F /* NoteNumbers.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NoteNumbers.pdf; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D24ABAB61AEF4B7500F4A5E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D24ABACF1AEF4B7500F4A5E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D24ABAB01AEF4B7400F4A5E0 = {
+			isa = PBXGroup;
+			children = (
+				D24ABABB1AEF4B7500F4A5E0 /* Intervalix */,
+				D24ABAD51AEF4B7500F4A5E0 /* IntervalixTests */,
+				D24ABABA1AEF4B7500F4A5E0 /* Products */,
+				D2B12DD21AF9225700B2DE7F /* Notes */,
+			);
+			sourceTree = "<group>";
+		};
+		D24ABABA1AEF4B7500F4A5E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D24ABAB91AEF4B7500F4A5E0 /* Intervalix.app */,
+				D24ABAD21AEF4B7500F4A5E0 /* IntervalixTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D24ABABB1AEF4B7500F4A5E0 /* Intervalix */ = {
+			isa = PBXGroup;
+			children = (
+				D24ABAC01AEF4B7500F4A5E0 /* AppDelegate.h */,
+				D24ABAC11AEF4B7500F4A5E0 /* AppDelegate.m */,
+				D24ABAE21AEF4C8A00F4A5E0 /* MainScreenViewController.h */,
+				D24ABAE31AEF4C8A00F4A5E0 /* MainScreenViewController.m */,
+				D24ABAE41AEF4C8A00F4A5E0 /* MainScreenViewController.xib */,
+				D2B12DCF1AF91F9000B2DE7F /* IntervalClass.h */,
+				D2B12DD01AF91F9000B2DE7F /* IntervalClass.m */,
+				D24ABAE71AEF4D7900F4A5E0 /* OptionsViewController.h */,
+				D24ABAE81AEF4D7900F4A5E0 /* OptionsViewController.m */,
+				D24ABAE91AEF4D7900F4A5E0 /* OptionsViewController.xib */,
+				D29E63F61AF1971E00C0B47C /* globalSettingsObject.h */,
+				D29E63F71AF1971E00C0B47C /* globalSettingsObject.m */,
+				D2B12DCC1AF91DB300B2DE7F /* customButton1.h */,
+				D2B12DCD1AF91DB300B2DE7F /* customButton1.m */,
+				D24ABAC91AEF4B7500F4A5E0 /* Images.xcassets */,
+				D24ABACB1AEF4B7500F4A5E0 /* LaunchScreen.xib */,
+				D24ABABC1AEF4B7500F4A5E0 /* Supporting Files */,
+			);
+			path = Intervalix;
+			sourceTree = "<group>";
+		};
+		D24ABABC1AEF4B7500F4A5E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D24ABABD1AEF4B7500F4A5E0 /* Info.plist */,
+				D24ABABE1AEF4B7500F4A5E0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D24ABAD51AEF4B7500F4A5E0 /* IntervalixTests */ = {
+			isa = PBXGroup;
+			children = (
+				D24ABAD81AEF4B7500F4A5E0 /* IntervalixTests.m */,
+				D24ABAD61AEF4B7500F4A5E0 /* Supporting Files */,
+			);
+			path = IntervalixTests;
+			sourceTree = "<group>";
+		};
+		D24ABAD61AEF4B7500F4A5E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D24ABAD71AEF4B7500F4A5E0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D2B12DD21AF9225700B2DE7F /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				D2B12DD31AF9225700B2DE7F /* 52_E_2.mp3 */,
+				D2B12DD41AF9225700B2DE7F /* 53_F_2.mp3 */,
+				D2B12DD51AF9225700B2DE7F /* 54_Gb_2.mp3 */,
+				D2B12DD61AF9225700B2DE7F /* 55_G_2.mp3 */,
+				D2B12DD71AF9225700B2DE7F /* 56_Ab_2.mp3 */,
+				D2B12DD81AF9225700B2DE7F /* 57_A_2.mp3 */,
+				D2B12DD91AF9225700B2DE7F /* 58_Bb_2.mp3 */,
+				D2B12DDA1AF9225700B2DE7F /* 59_B_2.mp3 */,
+				D2B12DDB1AF9225700B2DE7F /* 60_C_3.mp3 */,
+				D2B12DDC1AF9225700B2DE7F /* 61_Db_3.mp3 */,
+				D2B12DDD1AF9225700B2DE7F /* 62_D_3.mp3 */,
+				D2B12DDE1AF9225700B2DE7F /* 63_Eb_3.mp3 */,
+				D2B12DDF1AF9225700B2DE7F /* 64_E_3.mp3 */,
+				D2B12DE01AF9225700B2DE7F /* 65_F_3.mp3 */,
+				D2B12DE11AF9225700B2DE7F /* 66_Gb_3.mp3 */,
+				D2B12DE21AF9225700B2DE7F /* 67_G_3.mp3 */,
+				D2B12DE31AF9225700B2DE7F /* 68_Ab_3.mp3 */,
+				D2B12DE41AF9225700B2DE7F /* 69_A_3.mp3 */,
+				D2B12DE51AF9225700B2DE7F /* 70_Bb_3.mp3 */,
+				D2B12DE61AF9225700B2DE7F /* 71_B_3.mp3 */,
+				D2B12DE71AF9225700B2DE7F /* 72_C_4.mp3 */,
+				D2B12DE81AF9225700B2DE7F /* 73_Db_4.mp3 */,
+				D2B12DE91AF9225700B2DE7F /* 74_D_4.mp3 */,
+				D2B12DEA1AF9225700B2DE7F /* 75_Eb_4.mp3 */,
+				D2B12DEB1AF9225700B2DE7F /* 76_E_4.mp3 */,
+				D2B12DEC1AF9225700B2DE7F /* NoteNumbers.pdf */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D24ABAB81AEF4B7500F4A5E0 /* Intervalix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D24ABADC1AEF4B7500F4A5E0 /* Build configuration list for PBXNativeTarget "Intervalix" */;
+			buildPhases = (
+				D24ABAB51AEF4B7500F4A5E0 /* Sources */,
+				D24ABAB61AEF4B7500F4A5E0 /* Frameworks */,
+				D24ABAB71AEF4B7500F4A5E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Intervalix;
+			productName = Intervalix;
+			productReference = D24ABAB91AEF4B7500F4A5E0 /* Intervalix.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D24ABAD11AEF4B7500F4A5E0 /* IntervalixTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D24ABADF1AEF4B7500F4A5E0 /* Build configuration list for PBXNativeTarget "IntervalixTests" */;
+			buildPhases = (
+				D24ABACE1AEF4B7500F4A5E0 /* Sources */,
+				D24ABACF1AEF4B7500F4A5E0 /* Frameworks */,
+				D24ABAD01AEF4B7500F4A5E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D24ABAD41AEF4B7500F4A5E0 /* PBXTargetDependency */,
+			);
+			name = IntervalixTests;
+			productName = IntervalixTests;
+			productReference = D24ABAD21AEF4B7500F4A5E0 /* IntervalixTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D24ABAB11AEF4B7400F4A5E0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Dave Casini";
+				TargetAttributes = {
+					D24ABAB81AEF4B7500F4A5E0 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					D24ABAD11AEF4B7500F4A5E0 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = D24ABAB81AEF4B7500F4A5E0;
+					};
+				};
+			};
+			buildConfigurationList = D24ABAB41AEF4B7400F4A5E0 /* Build configuration list for PBXProject "Intervalix" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D24ABAB01AEF4B7400F4A5E0;
+			productRefGroup = D24ABABA1AEF4B7500F4A5E0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D24ABAB81AEF4B7500F4A5E0 /* Intervalix */,
+				D24ABAD11AEF4B7500F4A5E0 /* IntervalixTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D24ABAB71AEF4B7500F4A5E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D24ABACD1AEF4B7500F4A5E0 /* LaunchScreen.xib in Resources */,
+				D2B12E021AF9225700B2DE7F /* 73_Db_4.mp3 in Resources */,
+				D2B12E041AF9225700B2DE7F /* 75_Eb_4.mp3 in Resources */,
+				D2B12DF31AF9225700B2DE7F /* 58_Bb_2.mp3 in Resources */,
+				D2B12DF01AF9225700B2DE7F /* 55_G_2.mp3 in Resources */,
+				D2B12DF61AF9225700B2DE7F /* 61_Db_3.mp3 in Resources */,
+				D2B12DFA1AF9225700B2DE7F /* 65_F_3.mp3 in Resources */,
+				D2B12E011AF9225700B2DE7F /* 72_C_4.mp3 in Resources */,
+				D2B12DF51AF9225700B2DE7F /* 60_C_3.mp3 in Resources */,
+				D2B12E031AF9225700B2DE7F /* 74_D_4.mp3 in Resources */,
+				D2B12DF71AF9225700B2DE7F /* 62_D_3.mp3 in Resources */,
+				D2B12DF11AF9225700B2DE7F /* 56_Ab_2.mp3 in Resources */,
+				D2B12E051AF9225700B2DE7F /* 76_E_4.mp3 in Resources */,
+				D2B12DED1AF9225700B2DE7F /* 52_E_2.mp3 in Resources */,
+				D2B12DFC1AF9225700B2DE7F /* 67_G_3.mp3 in Resources */,
+				D2B12E061AF9225700B2DE7F /* NoteNumbers.pdf in Resources */,
+				D24ABAEB1AEF4D7900F4A5E0 /* OptionsViewController.xib in Resources */,
+				D2B12E001AF9225700B2DE7F /* 71_B_3.mp3 in Resources */,
+				D2B12DEF1AF9225700B2DE7F /* 54_Gb_2.mp3 in Resources */,
+				D2B12DF81AF9225700B2DE7F /* 63_Eb_3.mp3 in Resources */,
+				D24ABACA1AEF4B7500F4A5E0 /* Images.xcassets in Resources */,
+				D2B12DF41AF9225700B2DE7F /* 59_B_2.mp3 in Resources */,
+				D2B12DEE1AF9225700B2DE7F /* 53_F_2.mp3 in Resources */,
+				D2B12DFD1AF9225700B2DE7F /* 68_Ab_3.mp3 in Resources */,
+				D2B12DFB1AF9225700B2DE7F /* 66_Gb_3.mp3 in Resources */,
+				D2B12DF91AF9225700B2DE7F /* 64_E_3.mp3 in Resources */,
+				D24ABAE61AEF4C8A00F4A5E0 /* MainScreenViewController.xib in Resources */,
+				D2B12DF21AF9225700B2DE7F /* 57_A_2.mp3 in Resources */,
+				D2B12DFF1AF9225700B2DE7F /* 70_Bb_3.mp3 in Resources */,
+				D2B12DFE1AF9225700B2DE7F /* 69_A_3.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D24ABAD01AEF4B7500F4A5E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D24ABAB51AEF4B7500F4A5E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B12DCE1AF91DB300B2DE7F /* customButton1.m in Sources */,
+				D29E63F81AF1971E00C0B47C /* globalSettingsObject.m in Sources */,
+				D24ABAE51AEF4C8A00F4A5E0 /* MainScreenViewController.m in Sources */,
+				D2B12DD11AF91F9000B2DE7F /* IntervalClass.m in Sources */,
+				D24ABAEA1AEF4D7900F4A5E0 /* OptionsViewController.m in Sources */,
+				D24ABAC21AEF4B7500F4A5E0 /* AppDelegate.m in Sources */,
+				D24ABABF1AEF4B7500F4A5E0 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D24ABACE1AEF4B7500F4A5E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D24ABAD91AEF4B7500F4A5E0 /* IntervalixTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D24ABAD41AEF4B7500F4A5E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D24ABAB81AEF4B7500F4A5E0 /* Intervalix */;
+			targetProxy = D24ABAD31AEF4B7500F4A5E0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D24ABACB1AEF4B7500F4A5E0 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D24ABACC1AEF4B7500F4A5E0 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D24ABADA1AEF4B7500F4A5E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D24ABADB1AEF4B7500F4A5E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D24ABADD1AEF4B7500F4A5E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Intervalix/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D24ABADE1AEF4B7500F4A5E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Intervalix/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D24ABAE01AEF4B7500F4A5E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = IntervalixTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Intervalix.app/Intervalix";
+			};
+			name = Debug;
+		};
+		D24ABAE11AEF4B7500F4A5E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = IntervalixTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Intervalix.app/Intervalix";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D24ABAB41AEF4B7400F4A5E0 /* Build configuration list for PBXProject "Intervalix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D24ABADA1AEF4B7500F4A5E0 /* Debug */,
+				D24ABADB1AEF4B7500F4A5E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D24ABADC1AEF4B7500F4A5E0 /* Build configuration list for PBXNativeTarget "Intervalix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D24ABADD1AEF4B7500F4A5E0 /* Debug */,
+				D24ABADE1AEF4B7500F4A5E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D24ABADF1AEF4B7500F4A5E0 /* Build configuration list for PBXNativeTarget "IntervalixTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D24ABAE01AEF4B7500F4A5E0 /* Debug */,
+				D24ABAE11AEF4B7500F4A5E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D24ABAB11AEF4B7400F4A5E0 /* Project object */;
+}

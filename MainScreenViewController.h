@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "globalSettingsObject.h"
 #import "IntervalClass.h"
-#import <AVFoundation/AVFoundation.h>  //?? needs Core Audio?
+#import <AVFoundation/AVFoundation.h>  //seems to not need Core Audio - this is enough to run the players
 
 @interface MainScreenViewController : UIViewController  <AVAudioPlayerDelegate>
 
 @property  globalSettingsObject *mainPageSettings;
 
+- (void)displayNameStyle;
+
+//these  3 could be private?
 @property (nonatomic) IntervalClass *anInterval;
 @property (strong) AVAudioPlayer* player1;
 @property (strong) AVAudioPlayer* player2;

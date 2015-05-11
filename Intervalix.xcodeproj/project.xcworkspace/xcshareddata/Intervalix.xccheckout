@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DB38EFC3-D688-4DE8-909B-40F47A093E3D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Intervalix</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>748FCBC1BB78EFFEDF676EA9D7A3D0F35BEFAFDB</key>
+		<string>https://github.com/dcasini/Intervalix.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Intervalix.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>748FCBC1BB78EFFEDF676EA9D7A3D0F35BEFAFDB</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/dcasini/Intervalix.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>748FCBC1BB78EFFEDF676EA9D7A3D0F35BEFAFDB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>748FCBC1BB78EFFEDF676EA9D7A3D0F35BEFAFDB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Intervalix</string>
+		</dict>
+	</array>
+</dict>
+</plist>

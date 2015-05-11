@@ -6,6 +6,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainScreenViewController">
             <connections>
+                <outlet property="maj2button" destination="kpP-9L-h5N" id="pg5-9b-HAw"/>
+                <outlet property="maj3button" destination="75z-le-uYk" id="nwf-NK-M8A"/>
+                <outlet property="maj6button" destination="QnG-xJ-YWx" id="sW8-b6-Lr4"/>
+                <outlet property="maj7button" destination="6nD-cx-TO3" id="hdt-67-bJB"/>
+                <outlet property="min2button" destination="vAa-71-gcy" id="OxD-gX-KLC"/>
+                <outlet property="min3button" destination="qYl-K9-cU6" id="hNG-pZ-HWR"/>
+                <outlet property="min6button" destination="ydk-1C-HhP" id="pk1-Ve-Rj5"/>
+                <outlet property="min7button" destination="Bqd-79-3tK" id="aTQ-0q-Xur"/>
+                <outlet property="octaveButton" destination="Fqw-Kd-7dI" id="Ypu-eh-eCl"/>
+                <outlet property="optionsButton" destination="4FU-Bn-aYH" id="2mV-fa-QPf"/>
+                <outlet property="p4button" destination="AnT-kC-qEC" id="zWb-2r-43N"/>
+                <outlet property="p5button" destination="wPD-r3-5bg" id="WiV-tb-xRK"/>
+                <outlet property="playIntervalButton" destination="xAo-jm-9Ge" id="Uap-Jl-ev6"/>
+                <outlet property="repeatButton" destination="KNa-6s-nng" id="RSu-b4-nk7"/>
+                <outlet property="triToneButton" destination="bJu-Ya-Bk9" id="mCS-UW-J3y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,143 +29,201 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4FU-Bn-aYH" customClass="customButton1">
-                    <rect key="frame" x="236" y="162" width="129" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="4FU-Bn-aYH" customClass="customButton1">
+                    <rect key="frame" x="266" y="156" width="60" height="53"/>
                     <state key="normal" title="Go to Options">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="107" y="147" width="129" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="toOptions:" destination="-1" eventType="touchUpInside" id="hBE-ka-9RE"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNa-6s-nng" customClass="customButton1">
-                    <rect key="frame" x="248" y="390" width="104" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="KNa-6s-nng" customClass="customButton1">
+                    <rect key="frame" x="257" y="390" width="78" height="30"/>
                     <state key="normal" title="Repeat Interval">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="110" y="390" width="104" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="repeatInterval:" destination="-1" eventType="touchUpInside" id="VXO-sC-gIU"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAa-71-gcy" customClass="customButton1">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vAa-71-gcy" customClass="customButton1">
                     <rect key="frame" x="402" y="64" width="65" height="30"/>
                     <state key="normal" title="minor2nd">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="248" y="64" width="65" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="minor2nd:" destination="-1" eventType="touchUpInside" id="ymX-bY-69L"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpP-9L-h5N" customClass="customButton1">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="kpP-9L-h5N" customClass="customButton1">
                     <rect key="frame" x="486" y="136" width="65" height="30"/>
                     <state key="normal" title="Major2nd">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="287" y="136" width="65" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="Major2nd:" destination="-1" eventType="touchUpInside" id="AJp-TM-h0i"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYl-K9-cU6" customClass="customButton1">
-                    <rect key="frame" x="495" y="285" width="62" height="30"/>
-                    <state key="normal" title="minor3rd">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="minor3rd:" destination="-1" eventType="touchUpInside" id="CrM-eL-4Oj"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75z-le-uYk" customClass="customButton1">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="75z-le-uYk" customClass="customButton1">
                     <rect key="frame" x="495" y="390" width="62" height="30"/>
                     <state key="normal" title="Major3rd">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="277" y="390" width="62" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="Major3rd:" destination="-1" eventType="touchUpInside" id="uk8-6M-r0d"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnT-kC-qEC" customClass="customButton1">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="AnT-kC-qEC" customClass="customButton1">
                     <rect key="frame" x="411" y="480" width="71" height="30"/>
                     <state key="normal" title="Perfect4th">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="237" y="452" width="71" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="Perfect4th:" destination="-1" eventType="touchUpInside" id="FBP-uR-ubS"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJu-Ya-Bk9" customClass="customButton1">
-                    <rect key="frame" x="277" y="523" width="49" height="30"/>
-                    <state key="normal" title="TriTone">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="TriTone:" destination="-1" eventType="touchUpInside" id="q9v-zU-RwZ"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPD-r3-5bg" customClass="customButton1">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="wPD-r3-5bg" customClass="customButton1">
                     <rect key="frame" x="116" y="480" width="71" height="30"/>
                     <state key="normal" title="Perfect5th">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="34" y="452" width="71" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="Perfect5th:" destination="-1" eventType="touchUpInside" id="ebT-KG-3Qz"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydk-1C-HhP" customClass="customButton1">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ydk-1C-HhP" customClass="customButton1">
                     <rect key="frame" x="77" y="390" width="61" height="30"/>
                     <state key="normal" title="minor6th">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="26" y="390" width="61" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="minor6th:" destination="-1" eventType="touchUpInside" id="n7X-EG-WhW"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnG-xJ-YWx" customClass="customButton1">
-                    <rect key="frame" x="84" y="285" width="61" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="QnG-xJ-YWx" customClass="customButton1">
+                    <rect key="frame" x="8" y="285" width="61" height="30"/>
                     <state key="normal" title="Major6th">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="26" y="285" width="61" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="Major6th:" destination="-1" eventType="touchUpInside" id="E4n-h1-B0h"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqd-79-3tK" customClass="customButton1">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Bqd-79-3tK" customClass="customButton1">
                     <rect key="frame" x="84" y="136" width="61" height="30"/>
                     <state key="normal" title="minor7th">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="26" y="136" width="61" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="minor7th:" destination="-1" eventType="touchUpInside" id="nym-0N-SSL"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nD-cx-TO3" customClass="customButton1">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6nD-cx-TO3" customClass="customButton1">
                     <rect key="frame" x="128" y="64" width="61" height="30"/>
                     <state key="normal" title="Major7th">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="52" y="64" width="61" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="Major7th:" destination="-1" eventType="touchUpInside" id="rpz-Sc-K9g"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqw-Kd-7dI" customClass="customButton1">
-                    <rect key="frame" x="277" y="50" width="49" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Fqw-Kd-7dI" customClass="customButton1">
+                    <rect key="frame" x="277" y="25" width="49" height="30"/>
                     <state key="normal" title="Octave">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="138" y="49" width="49" height="30"/>
+                    </variation>
                     <connections>
                         <action selector="Octave:" destination="-1" eventType="touchUpInside" id="8fl-YY-PJ0"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAo-jm-9Ge" customClass="customButton1">
-                    <rect key="frame" x="259" y="217" width="84" height="165"/>
-                    <state key="normal" title="Play Interval">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="xAo-jm-9Ge" customClass="customButton1">
+                    <rect key="frame" x="194" y="270" width="212" height="60"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <state key="normal" title="Play Interval"/>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="132" y="217" width="61" height="165"/>
+                    </variation>
                     <connections>
                         <action selector="playInterval:" destination="-1" eventType="touchUpInside" id="12g-ia-L1C"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="bJu-Ya-Bk9" customClass="customButton1">
+                    <rect key="frame" x="277" y="562" width="49" height="30"/>
+                    <state key="normal" title="TriTone">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="138" y="484" width="49" height="30"/>
+                    </variation>
+                    <connections>
+                        <action selector="TriTone:" destination="-1" eventType="touchUpInside" id="q9v-zU-RwZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qYl-K9-cU6" customClass="customButton1">
+                    <rect key="frame" x="530" y="285" width="62" height="30"/>
+                    <state key="normal" title="minor3rd">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="277" y="285" width="62" height="30"/>
+                    </variation>
+                    <connections>
+                        <action selector="minor3rd:" destination="-1" eventType="touchUpInside" id="CrM-eL-4Oj"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Fqw-Kd-7dI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="0wX-bx-mVE"/>
+                <constraint firstItem="xAo-jm-9Ge" firstAttribute="leading" secondItem="QnG-xJ-YWx" secondAttribute="trailing" constant="8" id="1hU-GJ-TDe"/>
+                <constraint firstAttribute="centerY" secondItem="xAo-jm-9Ge" secondAttribute="centerY" id="22f-ic-IIz"/>
+                <constraint firstAttribute="trailing" secondItem="qYl-K9-cU6" secondAttribute="trailing" constant="8" id="2kI-tg-I9f"/>
+                <constraint firstAttribute="centerX" secondItem="KNa-6s-nng" secondAttribute="centerX" id="7Hz-os-OjW"/>
+                <constraint firstAttribute="centerX" secondItem="bJu-Ya-Bk9" secondAttribute="centerX" id="9wM-Ev-nX4"/>
+                <constraint firstItem="QnG-xJ-YWx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="JjM-2u-dzj"/>
+                <constraint firstAttribute="centerX" secondItem="xAo-jm-9Ge" secondAttribute="centerX" id="R2S-Wd-ALU"/>
+                <constraint firstAttribute="bottom" secondItem="bJu-Ya-Bk9" secondAttribute="bottom" constant="8" id="bFW-83-A8R"/>
+                <constraint firstItem="qYl-K9-cU6" firstAttribute="leading" secondItem="xAo-jm-9Ge" secondAttribute="trailing" constant="8" id="bPp-Z2-wvm"/>
+                <constraint firstAttribute="centerX" secondItem="Fqw-Kd-7dI" secondAttribute="centerX" id="mVL-Te-aB7"/>
+                <constraint firstAttribute="centerX" secondItem="4FU-Bn-aYH" secondAttribute="centerX" id="zoo-r4-Blh"/>
+            </constraints>
         </view>
     </objects>
 </document>

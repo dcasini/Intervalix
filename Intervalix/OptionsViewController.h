@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "globalSettingsObject.h"
+#import "MainScreenViewController.h"
 
 @interface OptionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property  globalSettingsObject *optionsPageSettings;
+
+@property MainScreenViewController *myPresenter;
 
 @end

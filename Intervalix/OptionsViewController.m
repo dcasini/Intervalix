@@ -7,6 +7,7 @@
 //
 
 #import "OptionsViewController.h"
+//#import "MainScreenViewController.h"
 
 @interface OptionsViewController ()
 
@@ -643,8 +644,12 @@ heightForHeaderInSection:(NSInteger)section
 
 - (IBAction)doneButton:(id)sender {
     [self.optionsPageSettings saveChanges];                                 //saving even if no selection
-        self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        [self dismissViewControllerAnimated:YES completion:nil];
+   
+    self.myPresenter.mainPageSettings = self.optionsPageSettings;           //main page needs to know the current settings
+    [self.myPresenter displayNameStyle];
+    
+    self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 ////////////////////////////////////////////////

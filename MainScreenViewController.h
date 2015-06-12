@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "globalSettingsObject.h"
 #import "IntervalClass.h"
-#import <AVFoundation/AVFoundation.h>  //seems to not need Core Audio - this is enough to run the players
+#import <AVFoundation/AVFoundation.h>  //seems to not need Core Audio - this is enough to run the players, even on a real device
 
 @interface MainScreenViewController : UIViewController  <AVAudioPlayerDelegate>
 

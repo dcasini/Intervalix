@@ -27,6 +27,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+      mainView.mainPageSettings.applicationJustOpened = YES;
+    
     return YES;
 }
 

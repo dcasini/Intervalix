@@ -36,8 +36,8 @@
     self.breakDownThenUp = NO;
     self.breakRandomUpOrDown = YES;
     
-    self.fullNameStyle = NO;
-    self.abbreviatedNameStyle = YES;
+    self.abbreviatedNameStyle = NO;
+    self.fullNameStyle = YES;
     
     self.answerStyleAlert = NO;
     self.answerStyleLabel = YES;
@@ -46,6 +46,8 @@
     self.playCorrectAnswer  = NO;
     self.playBothAnswer = NO;
     self.playNoAnswer = YES;
+        
+    self.displayWelcomeMessage = YES;
     }
     
     return self;
@@ -77,6 +79,8 @@
     [aCoder encodeBool:self.playBothAnswer  forKey:@"playBothAnswer"];
     [aCoder encodeBool:self.playNoAnswer  forKey:@"playNoAnswer"];
     
+    [aCoder encodeBool:self.displayWelcomeMessage forKey:@"displayWelcomeMessage"];
+    
 }
 //////////////////////////////////////////////////////////////////////////
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -105,6 +109,8 @@
         self.playCorrectAnswer  = [aDecoder decodeBoolForKey:@"playCorrectAnswer"];
         self.playBothAnswer = [aDecoder decodeBoolForKey:@"playBothAnswer"];
         self.playNoAnswer = [aDecoder decodeBoolForKey:@"playNoAnswer"];
+        
+        self.displayWelcomeMessage = [aDecoder decodeBoolForKey:@"displayWelcomeMessage"];
         
     }
     return self;

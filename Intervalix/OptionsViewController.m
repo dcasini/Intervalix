@@ -32,7 +32,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 5;   //changed 5th section from 'play prefs' w/4 choices,
+                //to 'reset to default'(which presents an alert to confirm), and 'view instructions' page
 }
 
 //////////////////////////////
@@ -54,7 +55,7 @@
             numRows = 2;    //'answer prefs' section
             break;
         case 4:
-            numRows = 4;    //'play prefs' section
+            numRows = 2;    //this was 'play prefs' section, now just 'ETC'
             break;
         default:
             break;
@@ -83,8 +84,8 @@
         case 3:     //2 rows
             sectionName = @"Answer Display Preferences";
             break;
-        case 4:     //4 rows
-            sectionName = @"Play Preferences";
+        case 4:     //was 4 rows
+            sectionName = @"Support"; //was @"Play Preferences";
             break;
         default:
             sectionName = @"";
@@ -100,7 +101,7 @@ heightForHeaderInSection:(NSInteger)section
 {
     CGFloat height;
     if (section == 0) {
-        height = 30;
+        height = 30;     //make space for the bar at top of screen
     }
     else height = 20;
     
@@ -156,7 +157,7 @@ heightForHeaderInSection:(NSInteger)section
                 break;
             case 4:
                 aCell = [aCell initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"defaultCell"];
-                aCell.textLabel.text = @"Random Sequential or Simultaneous";
+                aCell.textLabel.text = @"Random Seq. or Sim.";
                 aCell.detailTextLabel.text = @"default";
                 if (self.optionsPageSettings.playRandomSequentialOrSimultaneous) {
                     aCell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -285,7 +286,24 @@ heightForHeaderInSection:(NSInteger)section
         }
     }
     
-    if (indexPath.section == 4){                //4 rows
+    if (indexPath.section == 4) {
+        aCell.accessoryType = UITableViewCellAccessoryNone;
+        switch (indexPath.row) {
+            case 0:
+                aCell.textLabel.text = @"View instructions and support";
+                aCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                break;
+            case 1:
+                aCell.textLabel.text = @"Reset to defaults";
+                aCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                break;
+            default:
+                break;
+        }
+        
+    }
+    
+/*    if (indexPath.section == 4){                //4 rows - this WAS for 'play prefs
         switch (indexPath.row) {
             case 0:
                 aCell.textLabel.text = @"Play Incorrect Answer only";
@@ -333,6 +351,7 @@ heightForHeaderInSection:(NSInteger)section
                 break;
         }
     }
+ */
     
     
     return aCell;
@@ -431,8 +450,21 @@ heightForHeaderInSection:(NSInteger)section
         
         self.previousCheckS3 = self.checkedRowS3;
     }
+    
+    if (indexPath.section == 4) {       // no check marks needed for the Etc section....
+        if (indexPath.row == 0) {
+           // NSLog(@"info");
+            [self displayInformationView];
+        }
+        if (indexPath.row == 1) {
+           // NSLog(@"reset");
+            [self confirmBeforeReset];
+        }
+    }
+    
+    
 
-    if (indexPath.section == 4) {
+/*    if (indexPath.section == 4) {
         
         if (self.previousCheckS4 == indexPath.row) {  //no change
             return;
@@ -453,7 +485,7 @@ heightForHeaderInSection:(NSInteger)section
         
         self.previousCheckS4 = self.checkedRowS4;
     }
-    
+*/
     [self.optionsPageSettings saveChanges];   //if ANY row is selected, state is save even if there was no change
 }
 
@@ -587,8 +619,9 @@ heightForHeaderInSection:(NSInteger)section
                 break;
         }
     }
-    
-    if (indexPath.section == 4) {
+
+// no check marks needed for the Etc section....
+/*    if (indexPath.section == 4) {           
         switch (checked) {
             case 0:
                 _optionsPageSettings.playIncorrectAnswer = true;
@@ -622,7 +655,7 @@ heightForHeaderInSection:(NSInteger)section
                 break;
         }
     }
-
+*/
 
 }
 
@@ -644,12 +677,13 @@ heightForHeaderInSection:(NSInteger)section
 
 - (IBAction)doneButton:(id)sender {
     [self.optionsPageSettings saveChanges];                                 //saving even if no selection
-   
-    self.myPresenter.mainPageSettings = self.optionsPageSettings;           //main page needs to know the current settings
-    [self.myPresenter displayNameStyle];
+    [self.myPresenter loadView];
+    [self.myPresenter viewDidLoad];
+//    self.myPresenter.mainPageSettings = self.optionsPageSettings;           //main page needs to know the current settings
+//    [self.myPresenter displayNameStyle];
     
     self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];  //^{[self.myPresenter.view setNeedsDisplay];}
 }
 
 ////////////////////////////////////////////////
@@ -657,5 +691,53 @@ heightForHeaderInSection:(NSInteger)section
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (void)confirmBeforeReset {
+    
+    NSString *warningMessage = @"You are about to reset all options to default settings\n(also reenables the welcome screen)";
+    UIAlertController *welcomeAlert = [UIAlertController alertControllerWithTitle:@"ARE YOU SURE?"
+                                                                          message:warningMessage
+                                                                   preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *reset = [UIAlertAction actionWithTitle:@"Confirm Reset"
+                                        style:UIAlertActionStyleDestructive
+                                        handler:^(UIAlertAction * action) {self.optionsPageSettings = [self.optionsPageSettings initToDefaults];                                         [self.optionsPageSettings saveChanges];
+                                            [self.optionsTableView reloadData];}];
+    
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"CANCEL"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction * action) {}];
+    [welcomeAlert addAction:reset];
+    [welcomeAlert addAction:cancel];
+    
+    [self presentViewController:welcomeAlert animated:YES completion:nil];
+}
+
+- (void)displayInformationView {
+    
+    NSString *infoMessage = @"INSTRUCTIONS:\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\n\nSUPPORT:\n(facebook page)";
+    UIAlertController *InfoView = [UIAlertController alertControllerWithTitle:@"INTERVALIX"
+                                                                          message:infoMessage
+                                                                   preferredStyle:UIAlertControllerStyleAlert];
+    
+//    UIAlertAction *reset = [UIAlertAction actionWithTitle:@"confirm reset"
+//                                                    style:UIAlertActionStyleDestructive
+//                                                  handler:^(UIAlertAction * action)
+//                                                    {self.optionsPageSettings = [self.optionsPageSettings initToDefaults];
+//                                                      [self.optionsPageSettings saveChanges];
+//                                                      [self.optionsTableView reloadData];}];
+    
+    
+    UIAlertAction *done = [UIAlertAction actionWithTitle:@"DONE"
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:^(UIAlertAction * action) {}];
+    //[welcomeAlert addAction:reset];
+    [InfoView addAction:done];
+    
+    [self presentViewController:InfoView animated:YES completion:nil];
+}
+
 
 @end

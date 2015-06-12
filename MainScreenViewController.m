@@ -79,8 +79,9 @@
 
 @property UILabel *response;
 
-//@property (copy, nonatomic) void(^dismissBlock)(void);
+@property BOOL dontShowWelcome;
 
+//@property (copy, nonatomic) void(^dismissBlock)(void);
 
 //- (void)displayAnswer:(NSInteger)buttonSelected;
 //
@@ -98,9 +99,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  //  NSLog(@"\n\nViewDidLoad MAIN PAGE <<<<<<<<<<<<<<<<\n\n");
     // Do any additional setup after loading the view from its nib.
      self.mainPageSettings = [[globalSettingsObject alloc]init];
     
+//  [self.mainPageSettings initToDefaults];
+//    [self.mainPageSettings saveChanges];
+//    
     player1 = [[AVAudioPlayer alloc]init];
     player2 = [[AVAudioPlayer alloc]init];
     self.playersDone = YES;
@@ -117,15 +122,40 @@
     self.playIntervalButton.titleLabel.attributedText = attrText;
     
     [self displayNameStyle];
-    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    if (self.mainPageSettings.displayWelcomeMessage && self.mainPageSettings.applicationJustOpened) {
+        [self displayWelcome];
+    }
 }
 
 - (void)displayNameStyle
 {
+   // [self.view setNeedsDisplay];
+    UIImage *changeButtonColorIfSelected = [UIImage imageNamed:@"whiteSquare"];
+    [self.min2button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+    [self.maj2button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+    [self.min3button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+    [self.maj3button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+    [self.p4button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+    [self.triToneButton setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+    [self.p5button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+    [self.min6button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+    [self.maj6button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+    [self.min7button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+    [self.maj7button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+    [self.octaveButton setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
+
+    
     if (self.mainPageSettings.fullNameStyle) {
-        [self.playIntervalButton setTitle: @"Play Interval" forState:UIControlStateNormal];
-        [self.repeatButton setTitle: @"Repeat Interval" forState:UIControlStateNormal];
-        [self.optionsButton setTitle: @"Go to Options" forState:UIControlStateNormal];
+       // [self.playIntervalButton setTitle: @"Play Interval" forState:UIControlStateNormal];
+      //  [self.playIntervalButton setTitle: @"PLAY" forState:UIControlStateNormal];
+        
+//        [self.repeatButton setTitle: @"Repeat Interval" forState:UIControlStateNormal];
+//        [self.optionsButton setTitle: @"Go to Options" forState:UIControlStateNormal];
+        //[self.min2button se    //: @"minor second" forState:UIControlStateNormal];
         [self.min2button setTitle: @"minor second" forState:UIControlStateNormal];
         [self.maj2button setTitle: @"Major Second" forState:UIControlStateNormal];
         [self.min3button setTitle: @"minor third" forState:UIControlStateNormal];
@@ -140,9 +170,9 @@
         [self.octaveButton setTitle: @"Octave" forState:UIControlStateNormal];
     }
     else {
-        [self.playIntervalButton setTitle: @"play" forState:UIControlStateNormal];
-        [self.repeatButton setTitle: @"repeat" forState:UIControlStateNormal];
-        [self.optionsButton setTitle: @"options" forState:UIControlStateNormal];
+//        [self.playIntervalButton setTitle: @"play" forState:UIControlStateNormal];
+//        [self.repeatButton setTitle: @"repeat" forState:UIControlStateNormal];
+//        [self.optionsButton setTitle: @"options" forState:UIControlStateNormal];
         [self.min2button setTitle: @"m2" forState:UIControlStateNormal];
         [self.maj2button setTitle: @"M2" forState:UIControlStateNormal];
         [self.min3button setTitle: @"m3" forState:UIControlStateNormal];
@@ -158,20 +188,35 @@
     }
 }
 
+
+
+/* Important: UIAlertView is deprecated in iOS 8. (Note that UIAlertViewDelegate is also deprecated.) To create and manage alerts in iOS 8 and later, instead use UIAlertController with a preferredStyle of UIAlertControllerStyleAlert. */
+- (void)displayWelcome {
+    
+    NSString *welcomeMessage = @"Be sure you have adjusted the volume on your device.\nInstructions and configuration are available under Options,\n(including the option to reenable this message at startup)";
+    UIAlertController *welcomeAlert = [UIAlertController alertControllerWithTitle:@"Welcome to Intervalix"
+                                                                   message:welcomeMessage
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* dontShowAgain = [UIAlertAction actionWithTitle:@"Don't show at startup"
+                                                            style:UIAlertActionStyleDestructive
+                                                                handler:^(UIAlertAction * action) {self.mainPageSettings.displayWelcomeMessage = NO;
+                                                                    [self.mainPageSettings saveChanges];}];
+    
+    
+    UIAlertAction* dismissButShowAgain = [UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction * action) {}];
+    [welcomeAlert addAction:dontShowAgain];
+    [welcomeAlert addAction:dismissButShowAgain];
+    
+    [self presentViewController:welcomeAlert animated:YES completion:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)toOptions:(id)sender {
         OptionsViewController *optionsView = [[OptionsViewController alloc]init];
@@ -194,8 +239,6 @@
 
 - (IBAction)repeatInterval:(id)sender {     //use existing interval & settings
     [self parseSettings:self.anInterval.lowerNote nextTone:self.anInterval.upperNote];
-    //[self playTones:self.anInterval.upperNote secondTone:self.anInterval.lowerNote seqORsim:false];
-    // [self playTones:self.tone1 secondTone:self.tone2 seqYesSimNo:false];
 }
 
 - (void)playTones:(NSString *)tone1  secondTone:(NSString *)tone2 playBroken:(BOOL)playBroken
@@ -205,14 +248,13 @@
     NSString* path1 = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:tone1];
     NSError* error;
     player1 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path1] error:&error];
-    // player1 = [player1 initWithContentsOfURL:[NSURL fileURLWithPath:path1] error:&error];
     self.player1.delegate = self;
     
     NSString *path2 = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:tone2];
     NSError* error2;
     player2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path2] error:&error2];
     self.player2.delegate = self;
-    
+ 
     [player1 play];
     if (playBroken) {
         NSLog(@"Broken(sequential");
@@ -222,31 +264,48 @@
     {
         NSLog(@"simultaneous");
     }
-    [player2 play];
+   [player2 play];
     self.playersDone = YES;
+  
+
+//    self.playersDone = YES;
+//    NSTimeInterval myDelay = 0.25;
+//    SEL mySelector = @selector(play);
+//    if (playBroken) {
+//        NSLog(@"Broken(sequential");
+//        [player1 play];
+//        [player2 performSelector:mySelector
+//                      withObject:nil
+//                      afterDelay:myDelay];
+//     }
+//     else
+//     {
+//         NSLog(@"simultaneous");
+//         [player1 play];
+//         [player2 play];
+//     }
+//     self.playersDone = YES;
+    
 }
 ///////////////////////////////////////////
 
 - (void)displayAnswer:(NSInteger)buttonSelected
 {
-    // FIX THIS !!
-    NSString *intervalName = @"FIX ME"; // = [self.anInterval intervalNumberToName:buttonSelected nameStyle:self.mainPageSettings.intervalNameStyle];
+    NSString *intervalName = [self.anInterval intervalNumberToName:buttonSelected nameStyle:self.mainPageSettings.abbreviatedNameStyle];
     
-    NSString *correctString1 = @"Correct";
-    NSString *correctString2 = @" - the interval is ";
+    NSString *correctString1 = @"Correct\n";
+    NSString *correctString2 = @" the interval is\n";
     NSString *correctString3 = [correctString2 stringByAppendingString:intervalName];
     NSString *correctString4 = [correctString1 stringByAppendingString:correctString3];
     
-    NSString *incorrectString1 = @"Incorrect";
-    NSString *incorrectString2 = @" - the interval is not ";
+    NSString *incorrectString1 = @"Incorrect\n";
+    NSString *incorrectString2 = @" the interval is not\n";
     NSString *incorrectString3 = [incorrectString2 stringByAppendingString:intervalName];
     NSString *incorrectString4 = [incorrectString1 stringByAppendingString:incorrectString3];
     
+   
     
-    //    NSString *tempString2 = [NSString stringWithFormat:@"- interval:%d, selected:%d", (int)self.anInterval.intervalNumber, (int)buttonSelected];
-    //    NSString *tempString = [tempString1 stringByAppendingString:tempString2];
-    
-    
+/* Important: UIAlertView is deprecated in iOS 8. (Note that UIAlertViewDelegate is also deprecated.) To create and manage alerts in iOS 8 and later, instead use UIAlertController with a preferredStyle of UIAlertControllerStyleAlert. */
     if (self.mainPageSettings.answerStyleAlert)     //this is the alert...
     {
         if (buttonSelected == self.anInterval.intervalNumber)
@@ -265,7 +324,6 @@
                                                 delegate:self
                                        cancelButtonTitle:@"DONE"
                                        otherButtonTitles:nil];
-            //[alert addButtonWithTitle:@"Try again?"];  //trigger 'repeat interval' method?
             [alert show];
         }
     }
@@ -281,18 +339,20 @@
         
         CGRect responseRect = CGRectMake(centeredOriginX, -30, frameWidth, frameHeight);
         self.response = [[UILabel alloc]initWithFrame:responseRect];
-        _response.backgroundColor = [UIColor blackColor];
-        _response.textColor = [UIColor whiteColor];
+        self.response.numberOfLines = 0;
+        self.response.textAlignment = NSTextAlignmentCenter;
+        self.response.lineBreakMode = NSLineBreakByWordWrapping;
         [self.view addSubview:_response];
         
         if (buttonSelected == self.anInterval.intervalNumber) {
-            //NSLog(@"Correct - interval:%ld, selected:%ld", (long)self.anInterval.intervalNumber, (long)buttonSelected);
-            _response.text = correctString4;
+            self.response.backgroundColor = [UIColor greenColor];
+            self.response.textColor = [UIColor blackColor];
+            self.response.text = correctString4;
         }
         else {
-            // NSLog(@"Wrong - interval:%ld, selected:%ld", (long)self.anInterval.intervalNumber, (long)buttonSelected);
-            // NSString *tempString = [NSString stringWithFormat:@"Incorrect - interval:%d, selected:%d", (int)self.anInterval.intervalNumber, (int)buttonSelected];
-            _response.text = incorrectString4;
+            self.response.backgroundColor = [UIColor redColor];
+            self.response.textColor = [UIColor blackColor];
+            self.response.text = incorrectString4;
         }
         
         [UIView animateWithDuration:1.5
@@ -393,9 +453,7 @@
 }
 
 
-
-
-- (void)parseSettings:(NSString *)lowerNote nextTone:(NSString *)upperNote      //use enumerated??
+- (void)parseSettings:(NSString *)lowerNote nextTone:(NSString *)upperNote
 {
     NSInteger randomSeqBrkn = arc4random_uniform(2);  //returns 1 (sequential/broken) or 0 (simultaneous)
     NSLog(@"randomBroken:%ld", (long)randomSeqBrkn);
@@ -465,10 +523,6 @@
         }
     }
 }
-
-
-
-
 
 
 

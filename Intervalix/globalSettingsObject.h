@@ -37,11 +37,17 @@
 @property (nonatomic) BOOL playBothAnswer;
 @property (nonatomic) BOOL playNoAnswer;
 
+@property (nonatomic) BOOL displayWelcomeMessage;
+
+@property (nonatomic) BOOL applicationJustOpened;
+
 - (BOOL)saveChanges;
 
-//soemthing like this maybe used later for 'parsed interval' ??
+//something like this maybe used later for 'parsed interval' ??
 //@property (nonatomic) BOOL breakUP;
 //@property (nonatomic) BOOL breakDOWN;
+
+- (instancetype)initToDefaults;
 
 
 

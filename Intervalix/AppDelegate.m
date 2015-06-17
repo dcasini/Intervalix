@@ -27,7 +27,9 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-      mainView.mainPageSettings.applicationJustOpened = YES;
+    mainView.mainPageSettings.applicationJustOpened = YES;  //used in MainScreen/ViewDidLoad
+    //this is used to be sure welcome screen only appears at startup (if enabled)
+    //and does not reappear when coming back from options page
     
     return YES;
 }

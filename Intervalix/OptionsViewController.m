@@ -32,8 +32,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;   //changed 5th section from 'play prefs' w/4 choices,
-                //to 'reset to default'(which presents an alert to confirm), and 'view instructions' page
+    return 5;
 }
 
 //////////////////////////////
@@ -55,7 +54,7 @@
             numRows = 2;    //'answer prefs' section
             break;
         case 4:
-            numRows = 2;    //this was 'play prefs' section, now just 'ETC'
+            numRows = 2;    //'support' section
             break;
         default:
             break;
@@ -84,8 +83,8 @@
         case 3:     //2 rows
             sectionName = @"Answer Display Preferences";
             break;
-        case 4:     //was 4 rows
-            sectionName = @"Support"; //was @"Play Preferences";
+        case 4:     //w2 rows
+            sectionName = @"Support";
             break;
         default:
             sectionName = @"";
@@ -101,7 +100,7 @@ heightForHeaderInSection:(NSInteger)section
 {
     CGFloat height;
     if (section == 0) {
-        height = 30;     //make space for the bar at top of screen
+        height = 30;     //make space for the NavBar at top of screen
     }
     else height = 20;
     
@@ -453,11 +452,9 @@ heightForHeaderInSection:(NSInteger)section
     
     if (indexPath.section == 4) {       // no check marks needed for the Etc section....
         if (indexPath.row == 0) {
-           // NSLog(@"info");
             [self displayInformationView];
         }
         if (indexPath.row == 1) {
-           // NSLog(@"reset");
             [self confirmBeforeReset];
         }
     }
@@ -676,21 +673,19 @@ heightForHeaderInSection:(NSInteger)section
 //////////////////////////////////////////////
 
 - (IBAction)doneButton:(id)sender {
-    [self.optionsPageSettings saveChanges];                                 //saving even if no selection
-    [self.myPresenter loadView];
-    [self.myPresenter viewDidLoad];
-//    self.myPresenter.mainPageSettings = self.optionsPageSettings;           //main page needs to know the current settings
-//    [self.myPresenter displayNameStyle];
+    //[self.optionsPageSettings saveChanges];                                 //saving even if no selection
+    self.myPresenter.mainPageSettings = self.optionsPageSettings;           //main page needs to know the current settings
+    [self.myPresenter displayNameStyle];
     
     self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self dismissViewControllerAnimated:YES completion:nil];  //^{[self.myPresenter.view setNeedsDisplay];}
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 ////////////////////////////////////////////////
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+//- (void)didReceiveMemoryWarning {
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
 
 
 - (void)confirmBeforeReset {
@@ -717,23 +712,14 @@ heightForHeaderInSection:(NSInteger)section
 
 - (void)displayInformationView {
     
-    NSString *infoMessage = @"INSTRUCTIONS:\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\nhere's a whole bunch'o'text\n\nSUPPORT:\n(facebook page)";
+    NSString *infoMessage = @"\nINSTRUCTIONS:\nTap ‘Play’ to hear an interval. Then tap the button with the name of the interval to see if you idenified it correctly. Use the Options page to set view for the full interval name (ie:Major Third) or the abbreviated interval name (ie:M3).We use TriTone to indicate an augmented fourth/diminshed fifth, abbreviated TT. Octave is abbreviated as 8va. Note that each interval has its inversion directly across from it, in same color? For example, the note E with the note F a half step above is a minor second. But if you move that note E up an octave, the interval is a Major Seventh.\n\nCONTACT:\(email?)\n\nSUPPORT:\n(facebook page)\n";
     UIAlertController *InfoView = [UIAlertController alertControllerWithTitle:@"INTERVALIX"
                                                                           message:infoMessage
                                                                    preferredStyle:UIAlertControllerStyleAlert];
     
-//    UIAlertAction *reset = [UIAlertAction actionWithTitle:@"confirm reset"
-//                                                    style:UIAlertActionStyleDestructive
-//                                                  handler:^(UIAlertAction * action)
-//                                                    {self.optionsPageSettings = [self.optionsPageSettings initToDefaults];
-//                                                      [self.optionsPageSettings saveChanges];
-//                                                      [self.optionsTableView reloadData];}];
-    
-    
     UIAlertAction *done = [UIAlertAction actionWithTitle:@"DONE"
                                                      style:UIAlertActionStyleCancel
                                                    handler:^(UIAlertAction * action) {}];
-    //[welcomeAlert addAction:reset];
     [InfoView addAction:done];
     
     [self presentViewController:InfoView animated:YES completion:nil];

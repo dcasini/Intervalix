@@ -13,7 +13,7 @@
 
 @interface MainScreenViewController : UIViewController  <AVAudioPlayerDelegate>
 
-@property  globalSettingsObject *mainPageSettings;
+@property  globalSettingsObject *mainPageSettings;  //this needs to be seen by Options page
 
 - (void)displayNameStyle;
 

@@ -9,7 +9,7 @@
 #import "MainScreenViewController.h"
 #import "OptionsViewController.h"
 #import "globalSettingsObject.h"
-#import "customButton1.h"
+#import "customButton1.h"  //not using custom button? if not, change IBOutlets to UIButton?
 
 
 @interface MainScreenViewController ()
@@ -81,15 +81,6 @@
 
 @property BOOL dontShowWelcome;
 
-//@property (copy, nonatomic) void(^dismissBlock)(void);
-
-//- (void)displayAnswer:(NSInteger)buttonSelected;
-//
-//- (void)parseSettings:(NSString *)lowerNote nextTone:(NSString *)upperNote;
-//
-//- (void)playTones:(NSString *)tone1  secondTone:(NSString *)tone2 playBroken:(BOOL)playBroken;
-
-
 @end
 
 @implementation MainScreenViewController
@@ -99,32 +90,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  //  NSLog(@"\n\nViewDidLoad MAIN PAGE <<<<<<<<<<<<<<<<\n\n");
     // Do any additional setup after loading the view from its nib.
      self.mainPageSettings = [[globalSettingsObject alloc]init];
-    
-//  [self.mainPageSettings initToDefaults];
-//    [self.mainPageSettings saveChanges];
-//    
-    player1 = [[AVAudioPlayer alloc]init];
+
+    player1 = [[AVAudioPlayer alloc]init];   //improve response time by intantiating these before they are needed?
     player2 = [[AVAudioPlayer alloc]init];
     self.playersDone = YES;
     
-    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    style.alignment = NSTextAlignmentCenter;
-    //    style.firstLineHeadIndent = 10.0f;
-    //    style.headIndent = 10.0f;
-    //    style.tailIndent = -10.0f;
-    
-    NSAttributedString  *attrText = [[NSAttributedString alloc] initWithString:self.playIntervalButton.titleLabel.text attributes:@{NSParagraphStyleAttributeName : style}];
-    
-    self.playIntervalButton.titleLabel.numberOfLines = 2;
-    self.playIntervalButton.titleLabel.attributedText = attrText;
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+        self.playIntervalButton.titleLabel.font = [UIFont systemFontOfSize: 100];
+        self.repeatButton.titleLabel.font = [UIFont systemFontOfSize: 50];
+        self.optionsButton.titleLabel.font = [UIFont systemFontOfSize: 50];
+    }
     
     [self displayNameStyle];
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated    //must decide welcome AFTER rootView has appeared
 {
     if (self.mainPageSettings.displayWelcomeMessage && self.mainPageSettings.applicationJustOpened) {
         [self displayWelcome];
@@ -133,46 +115,28 @@
 
 - (void)displayNameStyle
 {
-   // [self.view setNeedsDisplay];
-    UIImage *changeButtonColorIfSelected = [UIImage imageNamed:@"whiteSquare"];
-    [self.min2button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-    [self.maj2button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-    [self.min3button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-    [self.maj3button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-    [self.p4button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-    [self.triToneButton setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-    [self.p5button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-    [self.min6button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-    [self.maj6button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-    [self.min7button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-    [self.maj7button setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-    [self.octaveButton setBackgroundImage:changeButtonColorIfSelected forState:UIControlStateHighlighted];
-
-    
     if (self.mainPageSettings.fullNameStyle) {
-       // [self.playIntervalButton setTitle: @"Play Interval" forState:UIControlStateNormal];
-      //  [self.playIntervalButton setTitle: @"PLAY" forState:UIControlStateNormal];
-        
-//        [self.repeatButton setTitle: @"Repeat Interval" forState:UIControlStateNormal];
-//        [self.optionsButton setTitle: @"Go to Options" forState:UIControlStateNormal];
-        //[self.min2button se    //: @"minor second" forState:UIControlStateNormal];
-        [self.min2button setTitle: @"minor second" forState:UIControlStateNormal];
-        [self.maj2button setTitle: @"Major Second" forState:UIControlStateNormal];
-        [self.min3button setTitle: @"minor third" forState:UIControlStateNormal];
-        [self.maj3button setTitle: @"Major Third" forState:UIControlStateNormal];
-        [self.p4button setTitle: @"Perfect Fourth" forState:UIControlStateNormal];
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+            [self defaultFontiPad];
+        }
+        [self.min2button setTitle: @" minor\nsecond" forState:UIControlStateNormal];
+        [self.maj2button setTitle: @"  Major\nSecond" forState:UIControlStateNormal];
+        [self.min3button setTitle: @"minor\n third" forState:UIControlStateNormal];
+        [self.maj3button setTitle: @"Major\n Third" forState:UIControlStateNormal];
+        [self.p4button setTitle: @"Perfect\n Fourth" forState:UIControlStateNormal];
         [self.triToneButton setTitle: @"TriTone" forState:UIControlStateNormal];
-        [self.p5button setTitle: @"Perfect Fifth" forState:UIControlStateNormal];
-        [self.min6button setTitle: @"minor sixth" forState:UIControlStateNormal];
-        [self.maj6button setTitle: @"Major Sixth" forState:UIControlStateNormal];
-        [self.min7button setTitle: @"minor seventh" forState:UIControlStateNormal];
-        [self.maj7button setTitle: @"Major Seventh" forState:UIControlStateNormal];
+        [self.p5button setTitle: @"Perfect\n  Fifth" forState:UIControlStateNormal];
+        [self.min6button setTitle: @"minor\n sixth" forState:UIControlStateNormal];
+        [self.maj6button setTitle: @" Major\n  Sixth" forState:UIControlStateNormal];
+        [self.min7button setTitle: @" minor\nseventh" forState:UIControlStateNormal];
+        [self.maj7button setTitle: @"  Major\nSeventh" forState:UIControlStateNormal];
         [self.octaveButton setTitle: @"Octave" forState:UIControlStateNormal];
     }
     else {
-//        [self.playIntervalButton setTitle: @"play" forState:UIControlStateNormal];
-//        [self.repeatButton setTitle: @"repeat" forState:UIControlStateNormal];
-//        [self.optionsButton setTitle: @"options" forState:UIControlStateNormal];
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+            [self bigFontiPad];
+        }
         [self.min2button setTitle: @"m2" forState:UIControlStateNormal];
         [self.maj2button setTitle: @"M2" forState:UIControlStateNormal];
         [self.min3button setTitle: @"m3" forState:UIControlStateNormal];
@@ -188,17 +152,50 @@
     }
 }
 
+-(void)defaultFontiPad
+{
+    self.min2button.titleLabel.font = [UIFont systemFontOfSize: 50];
+    self.maj2button.titleLabel.font = [UIFont systemFontOfSize: 50];
+    self.min3button.titleLabel.font = [UIFont systemFontOfSize: 50];
+    self.maj3button.titleLabel.font = [UIFont systemFontOfSize: 50];
+    self.p4button.titleLabel.font = [UIFont systemFontOfSize: 50];
+    self.triToneButton.titleLabel.font = [UIFont systemFontOfSize: 50];
+    self.p5button.titleLabel.font = [UIFont systemFontOfSize: 50];
+    self.min6button.titleLabel.font = [UIFont systemFontOfSize: 50];
+    self.maj6button.titleLabel.font = [UIFont systemFontOfSize: 50];
+    self.min7button.titleLabel.font = [UIFont systemFontOfSize: 50];
+    self.maj7button.titleLabel.font = [UIFont systemFontOfSize: 50];
+    self.octaveButton.titleLabel.font = [UIFont systemFontOfSize: 50];
+}
+
+-(void)bigFontiPad
+{
+ self.min2button.titleLabel.font = [UIFont systemFontOfSize: 90];
+    self.maj2button.titleLabel.font = [UIFont systemFontOfSize: 90];
+    self.min3button.titleLabel.font = [UIFont systemFontOfSize: 90];
+    self.maj3button.titleLabel.font = [UIFont systemFontOfSize: 90];
+    self.p4button.titleLabel.font = [UIFont systemFontOfSize: 90];
+    self.triToneButton.titleLabel.font = [UIFont systemFontOfSize: 90];
+    self.p5button.titleLabel.font = [UIFont systemFontOfSize: 90];
+    self.min6button.titleLabel.font = [UIFont systemFontOfSize: 90];
+    self.maj6button.titleLabel.font = [UIFont systemFontOfSize: 90];
+    self.min7button.titleLabel.font = [UIFont systemFontOfSize: 90];
+    self.maj7button.titleLabel.font = [UIFont systemFontOfSize: 90];
+    self.octaveButton.titleLabel.font = [UIFont systemFontOfSize: 90];
+    
+}
+
 
 
 /* Important: UIAlertView is deprecated in iOS 8. (Note that UIAlertViewDelegate is also deprecated.) To create and manage alerts in iOS 8 and later, instead use UIAlertController with a preferredStyle of UIAlertControllerStyleAlert. */
 - (void)displayWelcome {
     
-    NSString *welcomeMessage = @"Be sure you have adjusted the volume on your device.\nInstructions and configuration are available under Options,\n(including the option to reenable this message at startup)";
+    NSString *welcomeMessage = @"\nBe sure you have adjusted the volume on your device.\n\nInstructions and configuration are available under Options.\n\nUse 'Reset to Defaults' under Options to reenable this message at startup\n";
     UIAlertController *welcomeAlert = [UIAlertController alertControllerWithTitle:@"Welcome to Intervalix"
                                                                    message:welcomeMessage
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* dontShowAgain = [UIAlertAction actionWithTitle:@"Don't show at startup"
+    UIAlertAction* dontShowAgain = [UIAlertAction actionWithTitle:@"Don't show this at startup"
                                                             style:UIAlertActionStyleDestructive
                                                                 handler:^(UIAlertAction * action) {self.mainPageSettings.displayWelcomeMessage = NO;
                                                                     [self.mainPageSettings saveChanges];}];
@@ -206,16 +203,11 @@
     
     UIAlertAction* dismissButShowAgain = [UIAlertAction actionWithTitle:@"OK"
                                                             style:UIAlertActionStyleCancel
-                                                          handler:^(UIAlertAction * action) {}];
+                                                          handler:^(UIAlertAction * action) {self.mainPageSettings.applicationJustOpened = NO;}];
     [welcomeAlert addAction:dontShowAgain];
     [welcomeAlert addAction:dismissButShowAgain];
     
     [self presentViewController:welcomeAlert animated:YES completion:nil];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)toOptions:(id)sender {
@@ -306,7 +298,7 @@
    
     
 /* Important: UIAlertView is deprecated in iOS 8. (Note that UIAlertViewDelegate is also deprecated.) To create and manage alerts in iOS 8 and later, instead use UIAlertController with a preferredStyle of UIAlertControllerStyleAlert. */
-    if (self.mainPageSettings.answerStyleAlert)     //this is the alert...
+    if (self.mainPageSettings.answerStyleAlert)     //this is the OLD STYLE alert...
     {
         if (buttonSelected == self.anInterval.intervalNumber)
         {
@@ -524,10 +516,14 @@
     }
 }
 
-
-
-
 @end
+
+// this was created by default by Xcode, but not needed?
+//- (void)didReceiveMemoryWarning {
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
+
 
 
 

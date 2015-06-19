@@ -712,8 +712,8 @@ heightForHeaderInSection:(NSInteger)section
 
 - (void)displayInformationView {
     
-    NSString *infoMessage = @"\nINSTRUCTIONS:\nTap ‘Play’ to hear an interval. Then tap the button with the name of the interval to see if you idenified it correctly. Use the Options page to set view for the full interval name (ie:Major Third) or the abbreviated interval name (ie:M3).We use TriTone to indicate an augmented fourth/diminshed fifth, abbreviated TT. Octave is abbreviated as 8va. Note that each interval has its inversion directly across from it, in same color? For example, the note E with the note F a half step above is a minor second. But if you move that note E up an octave, the interval is a Major Seventh.\n\nCONTACT:\(email?)\n\nSUPPORT:\n(facebook page)\n";
-    UIAlertController *InfoView = [UIAlertController alertControllerWithTitle:@"INTERVALIX"
+    NSString *infoMessage = @"Tap ‘Play’ on the Main Screen to hear an interval, then tap the button with the name of the interval around the perimeter to see if you identified it correctly.\n\nThe Options page allows you to configure how intervals are played, and how names or answers are displayed.\n\nMore information at:\nfacebook.com/Intervalix";
+    UIAlertController *InfoView = [UIAlertController alertControllerWithTitle:@"INTERVALIX INSTRUCTIONS:"
                                                                           message:infoMessage
                                                                    preferredStyle:UIAlertControllerStyleAlert];
     

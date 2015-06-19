@@ -47,7 +47,7 @@
                         <action selector="toOptions:" destination="-1" eventType="touchUpInside" id="hBE-ka-9RE"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="KNa-6s-nng">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="KNa-6s-nng">
                     <rect key="frame" x="200" y="427" width="200" height="57"/>
                     <color key="backgroundColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Repeat">
@@ -279,6 +279,7 @@
                     <state key="normal" title="PLAY">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" backgroundImage="circleOnly"/>
                     <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="131" y="140" width="139" height="139"/>
                     </variation>
@@ -407,6 +408,7 @@
         </view>
     </objects>
     <resources>
+        <image name="circleOnly" width="200" height="200"/>
         <image name="whiteSquare" width="400" height="400"/>
     </resources>
 </document>

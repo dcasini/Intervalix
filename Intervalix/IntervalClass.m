@@ -156,7 +156,7 @@
                 intervalName = @"m2";
             }
             else
-                intervalName = @"minor Second";
+                intervalName = @"minor second";
             break;
         case 2:
             if (nameStyle) {
@@ -170,7 +170,7 @@
                 intervalName = @"m3";
             }
             else
-                intervalName = @"minor Third";
+                intervalName = @"minor third";
             break;
         case 4:
             if (nameStyle) {
@@ -205,7 +205,7 @@
                 intervalName = @"m6";
             }
             else
-                intervalName = @"minor Sixth";
+                intervalName = @"minor sixth";
             break;
         case 9:
             if (nameStyle) {
@@ -219,7 +219,7 @@
                 intervalName = @"m7";
             }
             else
-                intervalName = @"minor Seventh";
+                intervalName = @"minor seventh";
             break;
         case 11:
             if (nameStyle) {

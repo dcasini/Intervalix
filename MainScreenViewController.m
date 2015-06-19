@@ -99,8 +99,8 @@
     
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
         self.playIntervalButton.titleLabel.font = [UIFont systemFontOfSize: 100];
-        self.repeatButton.titleLabel.font = [UIFont systemFontOfSize: 50];
-        self.optionsButton.titleLabel.font = [UIFont systemFontOfSize: 50];
+        self.repeatButton.titleLabel.font = [UIFont systemFontOfSize: 40];
+        self.optionsButton.titleLabel.font = [UIFont systemFontOfSize: 40];
     }
     
     [self displayNameStyle];
@@ -170,27 +170,24 @@
 
 -(void)bigFontiPad
 {
- self.min2button.titleLabel.font = [UIFont systemFontOfSize: 90];
-    self.maj2button.titleLabel.font = [UIFont systemFontOfSize: 90];
-    self.min3button.titleLabel.font = [UIFont systemFontOfSize: 90];
-    self.maj3button.titleLabel.font = [UIFont systemFontOfSize: 90];
-    self.p4button.titleLabel.font = [UIFont systemFontOfSize: 90];
-    self.triToneButton.titleLabel.font = [UIFont systemFontOfSize: 90];
-    self.p5button.titleLabel.font = [UIFont systemFontOfSize: 90];
-    self.min6button.titleLabel.font = [UIFont systemFontOfSize: 90];
-    self.maj6button.titleLabel.font = [UIFont systemFontOfSize: 90];
-    self.min7button.titleLabel.font = [UIFont systemFontOfSize: 90];
-    self.maj7button.titleLabel.font = [UIFont systemFontOfSize: 90];
-    self.octaveButton.titleLabel.font = [UIFont systemFontOfSize: 90];
+ self.min2button.titleLabel.font = [UIFont systemFontOfSize: 80];
+    self.maj2button.titleLabel.font = [UIFont systemFontOfSize: 80];
+    self.min3button.titleLabel.font = [UIFont systemFontOfSize: 80];
+    self.maj3button.titleLabel.font = [UIFont systemFontOfSize: 80];
+    self.p4button.titleLabel.font = [UIFont systemFontOfSize: 80];
+    self.triToneButton.titleLabel.font = [UIFont systemFontOfSize: 80];
+    self.p5button.titleLabel.font = [UIFont systemFontOfSize: 80];
+    self.min6button.titleLabel.font = [UIFont systemFontOfSize: 80];
+    self.maj6button.titleLabel.font = [UIFont systemFontOfSize: 80];
+    self.min7button.titleLabel.font = [UIFont systemFontOfSize: 80];
+    self.maj7button.titleLabel.font = [UIFont systemFontOfSize: 80];
+    self.octaveButton.titleLabel.font = [UIFont systemFontOfSize: 80];
     
 }
 
-
-
-/* Important: UIAlertView is deprecated in iOS 8. (Note that UIAlertViewDelegate is also deprecated.) To create and manage alerts in iOS 8 and later, instead use UIAlertController with a preferredStyle of UIAlertControllerStyleAlert. */
 - (void)displayWelcome {
     
-    NSString *welcomeMessage = @"\nBe sure you have adjusted the volume on your device.\n\nInstructions and configuration are available under Options.\n\nUse 'Reset to Defaults' under Options to reenable this message at startup\n";
+    NSString *welcomeMessage = @"Be sure you have adjusted the volume on your device.\n\nInstructions and configuration are available under Options.\n\n'Reset to Defaults' under Options will reenable this message at startup.";
     UIAlertController *welcomeAlert = [UIAlertController alertControllerWithTitle:@"Welcome to Intervalix"
                                                                    message:welcomeMessage
                                                             preferredStyle:UIAlertControllerStyleAlert];
@@ -283,40 +280,44 @@
 
 - (void)displayAnswer:(NSInteger)buttonSelected
 {
-    NSString *intervalName = [self.anInterval intervalNumberToName:buttonSelected nameStyle:self.mainPageSettings.abbreviatedNameStyle];
+    NSString *intervalName = [self.anInterval intervalNumberToName:buttonSelected nameStyle:NO];//self.mainPageSettings.abbreviatedNameStyle];
     
-    NSString *correctString1 = @"Correct\n";
-    NSString *correctString2 = @" the interval is\n";
+    NSString *correctString1 = @"CORRECT";
+    NSString *correctString2 = @"\n";
     NSString *correctString3 = [correctString2 stringByAppendingString:intervalName];
     NSString *correctString4 = [correctString1 stringByAppendingString:correctString3];
     
-    NSString *incorrectString1 = @"Incorrect\n";
-    NSString *incorrectString2 = @" the interval is not\n";
-    NSString *incorrectString3 = [incorrectString2 stringByAppendingString:intervalName];
-    NSString *incorrectString4 = [incorrectString1 stringByAppendingString:incorrectString3];
+    NSString *incorrectString1 = @"keep trying....";
+    NSString *incorrectString2 = @"NOT ";
+    NSString *incorrectString3 = [incorrectString2 stringByAppendingString:[intervalName stringByAppendingString:correctString2]];
+    NSString *incorrectString4 = [incorrectString3 stringByAppendingString:[correctString2 stringByAppendingString:incorrectString1]];
     
-   
-    
-/* Important: UIAlertView is deprecated in iOS 8. (Note that UIAlertViewDelegate is also deprecated.) To create and manage alerts in iOS 8 and later, instead use UIAlertController with a preferredStyle of UIAlertControllerStyleAlert. */
-    if (self.mainPageSettings.answerStyleAlert)     //this is the OLD STYLE alert...
+    if (self.mainPageSettings.answerStyleAlert)
     {
+        
         if (buttonSelected == self.anInterval.intervalNumber)
         {
-            UIAlertView
-            * alert =[[UIAlertView alloc ] initWithTitle:correctString1 message:correctString3
-                                                delegate:self
-                                       cancelButtonTitle:@"OK"
-                                       otherButtonTitles:nil];
-            [alert show];
+            UIAlertController *correctAlert = [UIAlertController alertControllerWithTitle:correctString1
+                                                                                  message:correctString3
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* dismissWithOK = [UIAlertAction actionWithTitle:@"OK"
+                                                                          style:UIAlertActionStyleCancel
+                                                                        handler:nil];
+            [correctAlert addAction:dismissWithOK];
+            [self presentViewController:correctAlert animated:YES completion:nil];
         }
         else
         {
-            UIAlertView
-            * alert =[[UIAlertView alloc ] initWithTitle:incorrectString1 message:incorrectString3
-                                                delegate:self
-                                       cancelButtonTitle:@"DONE"
-                                       otherButtonTitles:nil];
-            [alert show];
+            UIAlertController *incorrectAlert = [UIAlertController alertControllerWithTitle:incorrectString3
+                                                                                  message:incorrectString1
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* dismissWithDONE = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                                    style:UIAlertActionStyleCancel
+                                                                  handler:nil];
+            [incorrectAlert addAction:dismissWithDONE];
+            [self presentViewController:incorrectAlert animated:YES completion:nil];
         }
     }
     else

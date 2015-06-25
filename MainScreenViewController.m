@@ -83,6 +83,8 @@
 
 @end
 
+
+
 @implementation MainScreenViewController
 
 @synthesize player1;
@@ -335,7 +337,7 @@
         self.response.numberOfLines = 0;
         self.response.textAlignment = NSTextAlignmentCenter;
         self.response.lineBreakMode = NSLineBreakByWordWrapping;
-        [self.view addSubview:_response];
+        [self.view addSubview:self.response];
         
         if (buttonSelected == self.anInterval.intervalNumber) {
             self.response.backgroundColor = [UIColor greenColor];

@@ -301,58 +301,6 @@ heightForHeaderInSection:(NSInteger)section
         }
         
     }
-    
-/*    if (indexPath.section == 4){                //4 rows - this WAS for 'play prefs
-        switch (indexPath.row) {
-            case 0:
-                aCell.textLabel.text = @"Play Incorrect Answer only";
-                if (self.optionsPageSettings.playIncorrectAnswer) {
-                    aCell.accessoryType = UITableViewCellAccessoryCheckmark;
-                    self.checkedRowS4 = indexPath.row;
-                    self.previousCheckS4 = indexPath.row;
-                }
-                else
-                    aCell.accessoryType = UITableViewCellAccessoryNone;
-                break;
-            case 1:
-                aCell.textLabel.text = @"Play Correct Answer only";
-                if (self.optionsPageSettings.playCorrectAnswer) {
-                    aCell.accessoryType = UITableViewCellAccessoryCheckmark;
-                    self.checkedRowS4 = indexPath.row;
-                    self.previousCheckS4 = indexPath.row;
-                }
-                else
-                    aCell.accessoryType = UITableViewCellAccessoryNone;
-                break;
-            case 2:
-                aCell.textLabel.text = @"Play Both";
-                if (self.optionsPageSettings.playBothAnswer) {
-                    aCell.accessoryType = UITableViewCellAccessoryCheckmark;
-                    self.checkedRowS4 = indexPath.row;
-                    self.previousCheckS4 = indexPath.row;
-                }
-                else
-                    aCell.accessoryType = UITableViewCellAccessoryNone;
-                break;
-            case 3:
-                aCell = [aCell initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"defaultCell"];
-                aCell.textLabel.text = @"Play Neither";
-                aCell.detailTextLabel.text = @"default";
-                if (self.optionsPageSettings.playNoAnswer) {
-                    aCell.accessoryType = UITableViewCellAccessoryCheckmark;
-                    self.checkedRowS4 = indexPath.row;
-                    self.previousCheckS4 = indexPath.row;
-                }
-                else
-                    aCell.accessoryType = UITableViewCellAccessoryNone;
-                break;
-            default:
-                break;
-        }
-    }
- */
-    
-    
     return aCell;
 }
 
@@ -402,7 +350,6 @@ heightForHeaderInSection:(NSInteger)section
         
         [self changePref:indexPath checked:self.checkedRowS1 unchecked:self.previousCheckS1];
         
-        
         self.previousCheckS1 = self.checkedRowS1;
     }
     
@@ -423,7 +370,6 @@ heightForHeaderInSection:(NSInteger)section
         oldCell.accessoryType = UITableViewCellAccessoryNone;
         
         [self changePref:indexPath checked:self.checkedRowS2 unchecked:self.previousCheckS2];
-        
         
         self.previousCheckS2 = self.checkedRowS2;
     }
@@ -446,7 +392,6 @@ heightForHeaderInSection:(NSInteger)section
         
         [self changePref:indexPath checked:self.checkedRowS3 unchecked:self.previousCheckS3];
         
-        
         self.previousCheckS3 = self.checkedRowS3;
     }
     
@@ -459,33 +404,8 @@ heightForHeaderInSection:(NSInteger)section
         }
     }
     
-    
-
-/*    if (indexPath.section == 4) {
-        
-        if (self.previousCheckS4 == indexPath.row) {  //no change
-            return;
-        }
-        
-        NSIndexPath *oldPathS4 = [NSIndexPath indexPathForRow:self.previousCheckS4 inSection:4];
-        
-        UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
-        
-        newCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        self.checkedRowS4 = indexPath.row;
-        
-        UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:oldPathS4];
-        oldCell.accessoryType = UITableViewCellAccessoryNone;
-        
-        [self changePref:indexPath checked:self.checkedRowS4 unchecked:self.previousCheckS4];
-        
-        
-        self.previousCheckS4 = self.checkedRowS4;
-    }
-*/
     [self.optionsPageSettings saveChanges];   //if ANY row is selected, state is save even if there was no change
 }
-
 
 /////////////////////////////////////////////////////////
 
@@ -494,38 +414,38 @@ heightForHeaderInSection:(NSInteger)section
     if (indexPath.section == 0) {
         switch (checked) {
             case 0:
-                _optionsPageSettings.playSequentialOnly = true;
+                self.optionsPageSettings.playSequentialOnly = true;
                 break;
             case 1:
-                _optionsPageSettings.playSimultaneousOnly = true;
+                self.optionsPageSettings.playSimultaneousOnly = true;
                 break;
             case 2:
-                _optionsPageSettings.playSequentialThenSimultaneous = true;
+                self.optionsPageSettings.playSequentialThenSimultaneous = true;
                 break;
             case 3:
-                _optionsPageSettings.playSimultaneousThenSequential = true;
+                self.optionsPageSettings.playSimultaneousThenSequential = true;
                 break;
             case 4:
-                _optionsPageSettings.playRandomSequentialOrSimultaneous = true;
+                self.optionsPageSettings.playRandomSequentialOrSimultaneous = true;
                 break;
             default:
                 break;
         }
         switch (unchecked) {
             case 0:
-                _optionsPageSettings.playSequentialOnly = false;
+                self.optionsPageSettings.playSequentialOnly = false;
                 break;
             case 1:
-                _optionsPageSettings.playSimultaneousOnly = false;
+                self.optionsPageSettings.playSimultaneousOnly = false;
                 break;
             case 2:
-                _optionsPageSettings.playSequentialThenSimultaneous = false;
+                self.optionsPageSettings.playSequentialThenSimultaneous = false;
                 break;
             case 3:
-                _optionsPageSettings.playSimultaneousThenSequential = false;
+                self.optionsPageSettings.playSimultaneousThenSequential = false;
                 break;
             case 4:
-                _optionsPageSettings.playRandomSequentialOrSimultaneous = false;
+                self.optionsPageSettings.playRandomSequentialOrSimultaneous = false;
                 break;
             default:
                 break;
@@ -534,38 +454,38 @@ heightForHeaderInSection:(NSInteger)section
     if (indexPath.section == 1) {
         switch (checked) {
             case 0:
-                _optionsPageSettings.breakUpOnly = true;
+                self.optionsPageSettings.breakUpOnly = true;
                 break;
             case 1:
-                _optionsPageSettings.breakDownOnly = true;
+                self.optionsPageSettings.breakDownOnly = true;
                 break;
             case 2:
-                _optionsPageSettings.breakUpThenDown = true;
+                self.optionsPageSettings.breakUpThenDown = true;
                 break;
             case 3:
-                _optionsPageSettings.breakDownThenUp = true;
+                self.optionsPageSettings.breakDownThenUp = true;
                 break;
             case 4:
-                _optionsPageSettings.breakRandomUpOrDown = true;
+                self.optionsPageSettings.breakRandomUpOrDown = true;
                 break;
             default:
                 break;
         }
         switch (unchecked) {
             case 0:
-                _optionsPageSettings.breakUpOnly = false;
+                self.optionsPageSettings.breakUpOnly = false;
                 break;
             case 1:
-                _optionsPageSettings.breakDownOnly = false;
+                self.optionsPageSettings.breakDownOnly = false;
                 break;
             case 2:
-                _optionsPageSettings.breakUpThenDown = false;
+                self.optionsPageSettings.breakUpThenDown = false;
                 break;
             case 3:
-                _optionsPageSettings.breakDownThenUp = false;
+                self.optionsPageSettings.breakDownThenUp = false;
                 break;
             case 4:
-                _optionsPageSettings.breakRandomUpOrDown = false;
+                self.optionsPageSettings.breakRandomUpOrDown = false;
                 break;
             default:
                 break;
@@ -574,20 +494,20 @@ heightForHeaderInSection:(NSInteger)section
     if (indexPath.section == 2) {
         switch (checked) {
             case 0:
-                _optionsPageSettings.abbreviatedNameStyle = true;
+                self.optionsPageSettings.abbreviatedNameStyle = true;
                 break;
             case 1:
-                _optionsPageSettings.fullNameStyle = true;
+                self.optionsPageSettings.fullNameStyle = true;
                 break;
             default:
                 break;
         }
         switch (unchecked) {
             case 0:
-                _optionsPageSettings.abbreviatedNameStyle = false;
+                self.optionsPageSettings.abbreviatedNameStyle = false;
                 break;
             case 1:
-                _optionsPageSettings.fullNameStyle = false;
+                self.optionsPageSettings.fullNameStyle = false;
                 break;
             default:
                 break;
@@ -597,63 +517,25 @@ heightForHeaderInSection:(NSInteger)section
     if (indexPath.section == 3) {
         switch (checked) {
             case 0:
-                _optionsPageSettings.answerStyleAlert = true;
+                self.optionsPageSettings.answerStyleAlert = true;
                 break;
             case 1:
-                _optionsPageSettings.answerStyleLabel = true;
+                self.optionsPageSettings.answerStyleLabel = true;
                 break;
             default:
                 break;
         }
         switch (unchecked) {
             case 0:
-                _optionsPageSettings.answerStyleAlert = false;
+                self.optionsPageSettings.answerStyleAlert = false;
                 break;
             case 1:
-                _optionsPageSettings.answerStyleLabel = false;
+                self.optionsPageSettings.answerStyleLabel = false;
                 break;
             default:
                 break;
         }
     }
-
-// no check marks needed for the Etc section....
-/*    if (indexPath.section == 4) {           
-        switch (checked) {
-            case 0:
-                _optionsPageSettings.playIncorrectAnswer = true;
-                break;
-            case 1:
-                _optionsPageSettings.playCorrectAnswer = true;
-                break;
-            case 2:
-                _optionsPageSettings.playBothAnswer = true;
-                break;
-            case 3:
-                _optionsPageSettings.playNoAnswer = true;
-                break;
-            default:
-                break;
-        }
-        switch (unchecked) {
-            case 0:
-                _optionsPageSettings.playIncorrectAnswer = false;
-                break;
-            case 1:
-                _optionsPageSettings.playCorrectAnswer = false;
-                break;
-            case 2:
-                _optionsPageSettings.playBothAnswer = false;
-                break;
-            case 3:
-                _optionsPageSettings.playNoAnswer = false;
-                break;
-            default:
-                break;
-        }
-    }
-*/
-
 }
 
 //////////////////////
@@ -681,13 +563,6 @@ heightForHeaderInSection:(NSInteger)section
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-////////////////////////////////////////////////
-//- (void)didReceiveMemoryWarning {
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
-
-
 - (void)confirmBeforeReset {
     
     NSString *warningMessage = @"You are about to reset all options to default settings\n(also reenables the welcome screen)";
@@ -712,17 +587,35 @@ heightForHeaderInSection:(NSInteger)section
 
 - (void)displayInformationView {
     
-    NSString *infoMessage = @"Tap ‘Play’ on the Main Screen to hear an interval, then tap the button with the name of the interval around the perimeter to see if you identified it correctly.\n\nThe Options page allows you to configure how intervals are played, and how names or answers are displayed.\n\nMore information at:\nfacebook.com/Intervalix";
+    NSString *infoMessage = @"Tap ‘Play’ on the Main Screen to hear an interval, then tap the button with the name of the interval around the perimeter to see if you identified it correctly.\n\nThe Options page allows you to configure how intervals are played, and how names or answers are displayed.\n\nMore information at:";
+    
     UIAlertController *InfoView = [UIAlertController alertControllerWithTitle:@"INTERVALIX INSTRUCTIONS:"
                                                                           message:infoMessage
                                                                    preferredStyle:UIAlertControllerStyleAlert];
     
+    UIAlertAction *goToSupport = [UIAlertAction actionWithTitle:@"facebook.com/Intervalix"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {[self openLink];}];
+    
     UIAlertAction *done = [UIAlertAction actionWithTitle:@"DONE"
                                                      style:UIAlertActionStyleCancel
                                                    handler:^(UIAlertAction * action) {}];
+    
+    [InfoView addAction:goToSupport];
     [InfoView addAction:done];
     
     [self presentViewController:InfoView animated:YES completion:nil];
+}
+
+-(void)openLink
+{
+    UIApplication *mySafari = [UIApplication sharedApplication];
+    
+    NSURL *myURL = [[NSURL alloc]initWithString:@"http://facebook.com/Intervalix"];
+    
+    [mySafari openURL:myURL];
+    
+    
 }
 
 

@@ -28,9 +28,9 @@
         self.intervalNumber = arc4random_uniform(12) + 1;  //generates lowest num = 1, highest num = 12
         self.rootNoteNumber = [self generateRoot];
         self.secondToneNumber = [self generateSecondTone];
-        _upperNote = [self returnNoteName:(int)_rootNoteNumber];
-        _lowerNote = [self returnNoteName:(int)_secondToneNumber];
-        _breakUP = arc4random_uniform(2);  //returns 0 or 1
+        self.upperNote = [self returnNoteName:(int)self.rootNoteNumber];
+        self.lowerNote = [self returnNoteName:(int)self.secondToneNumber];
+        self.breakUP = arc4random_uniform(2);  //returns 0 or 1
     }
     return self;
 }
@@ -39,7 +39,7 @@
 {
     NSInteger randomRoot = 0;
     randomRoot = arc4random_uniform(12) + 1;
-    if (!_breakUP) {
+    if (!self.breakUP) {
         randomRoot += 12;
     }
     return randomRoot;
@@ -48,11 +48,11 @@
 - (NSInteger)generateSecondTone
 {
     NSInteger secondToneNumber = 0;
-    if (_breakUP) {
-        secondToneNumber = (_rootNoteNumber + _intervalNumber);
+    if (self.breakUP) {
+        secondToneNumber = (self.rootNoteNumber + self.intervalNumber);
     }
     else {
-        secondToneNumber = (_rootNoteNumber - _intervalNumber);
+        secondToneNumber = (self.rootNoteNumber - self.intervalNumber);
     }
     return secondToneNumber;
 }
@@ -98,7 +98,6 @@
         case 12:
             noteString = @"63_Eb_3.mp3";
             break;
-            
         case 13:
             noteString = @"64_E_3.mp3";
             break;

@@ -110,6 +110,7 @@
 
 -(void)viewDidAppear:(BOOL)animated    //must decide welcome AFTER rootView has appeared
 {
+    [super viewDidAppear:animated];
     if (self.mainPageSettings.displayWelcomeMessage && self.mainPageSettings.applicationJustOpened) {
         [self displayWelcome];
     }

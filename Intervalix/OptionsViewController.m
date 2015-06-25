@@ -57,6 +57,7 @@
             numRows = 2;    //'support' section
             break;
         default:
+            numRows = 0;
             break;
     }
     return numRows;

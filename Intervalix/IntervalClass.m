@@ -111,7 +111,7 @@
             noteString = @"67_G_3.mp3";
             break;
         case 17:
-            noteString = @"68_Ab_4.mp3";
+            noteString = @"68_Ab_3.mp3";
             break;
         case 18:
             noteString = @"69_A_3.mp3";
@@ -238,7 +238,6 @@
         default:
             break;
     }
-    
     
     return intervalName;
 }

@@ -9,8 +9,6 @@
 #import "MainScreenViewController.h"
 #import "OptionsViewController.h"
 #import "globalSettingsObject.h"
-#import "customButton1.h"  //not using custom button? if not, change IBOutlets to UIButton?
-
 
 @interface MainScreenViewController ()
 
@@ -45,44 +43,77 @@
 - (IBAction)Octave:(id)sender;      //interval value 12
 
 
-@property (weak, nonatomic) IBOutlet customButton1 *min2button;
+@property (weak, nonatomic) IBOutlet UIButton *min2button;
 
-@property (weak, nonatomic) IBOutlet customButton1 *maj2button;
+@property (weak, nonatomic) IBOutlet UIButton *maj2button;
 
-@property (weak, nonatomic) IBOutlet customButton1 *min3button;
+@property (weak, nonatomic) IBOutlet UIButton *min3button;
 
-@property (weak, nonatomic) IBOutlet customButton1 *maj3button;
+@property (weak, nonatomic) IBOutlet UIButton *maj3button;
 
-@property (weak, nonatomic) IBOutlet customButton1 *p4button;
+@property (weak, nonatomic) IBOutlet UIButton *p4button;
 
-@property (weak, nonatomic) IBOutlet customButton1 *triToneButton;
+@property (weak, nonatomic) IBOutlet UIButton *triToneButton;
 
-@property (weak, nonatomic) IBOutlet customButton1 *p5button;
+@property (weak, nonatomic) IBOutlet UIButton *p5button;
 
-@property (weak, nonatomic) IBOutlet customButton1 *min6button;
+@property (weak, nonatomic) IBOutlet UIButton *min6button;
 
-@property (weak, nonatomic) IBOutlet customButton1 *maj6button;
+@property (weak, nonatomic) IBOutlet UIButton *maj6button;
 
-@property (weak, nonatomic) IBOutlet customButton1 *min7button;
+@property (weak, nonatomic) IBOutlet UIButton *min7button;
 
-@property (weak, nonatomic) IBOutlet customButton1 *maj7button;
+@property (weak, nonatomic) IBOutlet UIButton *maj7button;
 
-@property (weak, nonatomic) IBOutlet customButton1 *octaveButton;
+@property (weak, nonatomic) IBOutlet UIButton *octaveButton;
 
-@property (weak, nonatomic) IBOutlet customButton1 *playIntervalButton;  //weak (automatic) strong?
+@property (weak, nonatomic) IBOutlet UIButton *playIntervalButton;
 
-@property (weak, nonatomic) IBOutlet customButton1 *optionsButton;
+@property (weak, nonatomic) IBOutlet UIButton *optionsButton;
 
-@property (weak, nonatomic) IBOutlet customButton1 *repeatButton;
-
-@property BOOL playersDone;
+@property (weak, nonatomic) IBOutlet UIButton *repeatButton;
 
 @property UILabel *response;
 
 @property BOOL dontShowWelcome;
 
-@end
+@property NSInteger randomSeqBrkn;
 
+@property NSInteger randomDirUp;
+
+@property NSTimeInterval timeBetweenNotes;
+
+@property NSTimeInterval timeBetweenIntervals;
+
+@property SEL selectPlay;
+
+@property SEL selectStop;
+
+@property SEL selectDownUp;
+
+@property SEL selectUpDown;
+
+@property SEL selectSimultaneous;
+
+@property SEL selectSelf;
+
+@property SEL selectParseSequential;
+
+@property NSString *upperNote;
+
+@property NSString *lowerNote;
+
+@property NSString *pathToUpperNote;
+
+@property NSString *pathToLowerNote;
+
+@property BOOL answersEnabled;
+
+@property NSString *finishSource;
+
+@property BOOL killingPlayers;
+
+@end
 
 
 @implementation MainScreenViewController
@@ -92,13 +123,40 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-     self.mainPageSettings = [[globalSettingsObject alloc]init];
-
-    player1 = [[AVAudioPlayer alloc]init];   //improve response time by intantiating these before they are needed?
-    player2 = [[AVAudioPlayer alloc]init];
-    self.playersDone = YES;
+    self.mainPageSettings = [[globalSettingsObject alloc]init];
     
+    //should come up with all response buttons disabled, enabled on one tap of 'Play'
+    self.repeatButton.enabled = NO; //Repeat won't be enabled until at least one tap of 'Play'
+    self.answersEnabled = NO;       //response buttons won't be enabled until at least one tap of 'Play'
+    [self answersEnableDisable];
+    
+    self.killingPlayers = NO;
+    
+    self.anInterval = [[IntervalClass alloc] init];
+    self.upperNote = self.anInterval.upperNote;
+    self.lowerNote = self.anInterval.lowerNote;
+    
+    NSError *error;
+    
+    self.pathToUpperNote = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.upperNote];
+    self.pathToLowerNote = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.lowerNote];
+    player1 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.pathToUpperNote] error:&error];
+    player2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.pathToLowerNote] error:&error];
+    
+    self.player1.delegate = self;
+    self.player2.delegate = self;
+    
+    self.timeBetweenNotes = 0.5;
+    self.timeBetweenIntervals = 1.9;
+    self.selectPlay = @selector(play);
+    self.selectStop = @selector(stop);
+    self.selectSelf = @selector(self);
+    self.selectParseSequential = @selector(parseSequential);
+    self.selectUpDown = @selector(playUpDown);
+    self.selectDownUp = @selector(playDownUp);
+    self.selectSimultaneous = @selector(playSimultaneous);
+    
+    [self.playIntervalButton setTitle:@"?" forState:UIControlStateHighlighted];
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
         self.playIntervalButton.titleLabel.font = [UIFont systemFontOfSize: 100];
         self.repeatButton.titleLabel.font = [UIFont systemFontOfSize: 40];
@@ -145,13 +203,13 @@
         [self.min3button setTitle: @"m3" forState:UIControlStateNormal];
         [self.maj3button setTitle: @"M3" forState:UIControlStateNormal];
         [self.p4button setTitle: @"P4" forState:UIControlStateNormal];
-        [self.triToneButton setTitle: @"TT" forState:UIControlStateNormal];
+        [self.triToneButton setTitle: @"TrTn" forState:UIControlStateNormal];
         [self.p5button setTitle: @"P5" forState:UIControlStateNormal];
         [self.min6button setTitle: @"m6" forState:UIControlStateNormal];
         [self.maj6button setTitle: @"M6" forState:UIControlStateNormal];
         [self.min7button setTitle: @"m7" forState:UIControlStateNormal];
         [self.maj7button setTitle: @"M7" forState:UIControlStateNormal];
-        [self.octaveButton setTitle: @"8va" forState:UIControlStateNormal];
+        [self.octaveButton setTitle: @"P8" forState:UIControlStateNormal];
     }
 }
 
@@ -216,75 +274,231 @@
         optionsView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         [self presentViewController:optionsView animated:YES completion:nil];
 }
-
-- (IBAction)playInterval:(id)sender {           //create a new interval, use existing settings
-    [self.response removeFromSuperview];
-    if (self.playersDone) {
-        self.playersDone = NO;
-        self.anInterval = [[IntervalClass alloc] init];
-        NSLog(@"\n\n\n requested lower: %@, upper: %@", self.anInterval.lowerNote, self.anInterval.upperNote);
-        [self parseSettings:self.anInterval.lowerNote nextTone:self.anInterval.upperNote];
-    }
-
-    
-}
-
-- (IBAction)repeatInterval:(id)sender {     //use existing interval & settings
-    [self parseSettings:self.anInterval.lowerNote nextTone:self.anInterval.upperNote];
-}
-
-- (void)playTones:(NSString *)tone1  secondTone:(NSString *)tone2 playBroken:(BOOL)playBroken
+////////////////////////////////////////////////////////////////////
+-(void)killPlayers
 {
-    NSLog(@"playing tone1 = %@ - - tone2 = %@", tone1, tone2);
-    
-    NSString* path1 = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:tone1];
-    NSError* error;
-    player1 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path1] error:&error];
-    self.player1.delegate = self;
-    
-    NSString *path2 = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:tone2];
-    NSError* error2;
-    player2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path2] error:&error2];
-    self.player2.delegate = self;
- 
-    [player1 play];
-    if (playBroken) {
-        NSLog(@"Broken(sequential");
-        sleep(1);
+    self.killingPlayers = YES;
+    [player1 stop];
+    [player1 stop];
+}
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    //not currently used
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+- (IBAction)playInterval:(id)sender {           //create a new interval, use existing settings
+    if ((player1.playing || player2.playing) && (self.killingPlayers = NO)){
+        self.killingPlayers = YES;
+        [player1 stop];
+        [player1 stop];
     }
     else
     {
-        NSLog(@"simultaneous");
+        [self.playIntervalButton setTitle:@"?" forState:UIControlStateNormal];
+        self.killingPlayers = NO;
+        [self playNew];
     }
-   [player2 play];
-    self.playersDone = YES;
-  
+}
 
-//    self.playersDone = YES;
-//    NSTimeInterval myDelay = 0.25;
-//    SEL mySelector = @selector(play);
-//    if (playBroken) {
-//        NSLog(@"Broken(sequential");
-//        [player1 play];
-//        [player2 performSelector:mySelector
-//                      withObject:nil
-//                      afterDelay:myDelay];
-//     }
-//     else
-//     {
-//         NSLog(@"simultaneous");
-//         [player1 play];
-//         [player2 play];
-//     }
-//     self.playersDone = YES;
+-(void)playNew
+{
+    [self.response removeFromSuperview];
+    self.repeatButton.enabled = YES;
+    self.answersEnabled = YES;
+    [self answersEnableDisable];
     
+    self.anInterval = [[IntervalClass alloc] init];
+    self.upperNote = self.anInterval.upperNote;
+    self.lowerNote = self.anInterval.lowerNote;
+    
+    NSError *error;
+    
+    self.pathToUpperNote = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.upperNote];
+    self.pathToLowerNote = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.lowerNote];
+    self.player1 = [player1 initWithContentsOfURL:[NSURL fileURLWithPath:self.pathToUpperNote] error:&error];
+    self.player2 = [player2 initWithContentsOfURL:[NSURL fileURLWithPath:self.pathToLowerNote] error:&error];
+    self.player1.delegate = self;  //must 'RESET' the player delegates each time it is initialized
+    self.player2.delegate = self;
+    
+    self.randomSeqBrkn = arc4random_uniform(2);  //returns 1 (sequential/broken) or 0 (simultaneous)
+    self.randomDirUp = arc4random_uniform(2);  //returns 1 (up) or 0 (down)
+    [self parseSettings:self.anInterval.lowerNote nextTone:self.anInterval.upperNote];
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+- (IBAction)repeatInterval:(id)sender {
+    if ((player1.playing || player2.playing) && (self.killingPlayers = NO)) {
+        self.killingPlayers = YES;
+        [player1 stop];
+        [player1 stop];
+    }
+    else
+    {
+        [self.playIntervalButton setTitle:@"?" forState:UIControlStateNormal];
+        self.killingPlayers = NO;
+        [self playRepeat];
+    }
+}
+-(void)playRepeat   //use existing interval & settings
+{
+    [self.response removeFromSuperview];
+    [self parseSettings:self.anInterval.lowerNote nextTone:self.anInterval.upperNote];
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+-(void)playSimultaneous
+{
+    if (!self.killingPlayers) {
+        [player1 play];
+        [player2 play];
+    }
+}
+///////////////////////////////////////////
+-(void)playUpDown
+{
+    if (!self.killingPlayers)
+    {
+        [player1 play];
+        [player2 prepareToPlay];
+    }
+    
+    if (!self.killingPlayers)
+    {
+        [player2 performSelector:self.selectPlay
+                      withObject:nil
+                      afterDelay:self.timeBetweenNotes];
+    }
+}
+///////////////////////////////////////////
+-(void)playDownUp
+{
+   if (!self.killingPlayers)
+   {
+       [player2 play];
+       [player1 prepareToPlay];
+   }
+    if (!self.killingPlayers)
+    {
+        [player1 performSelector:self.selectPlay
+                      withObject:nil
+                      afterDelay:self.timeBetweenNotes];
+    }
+}
+///////////////////////////////////////////
+- (void)parseSettings:(NSString *)lowerNote nextTone:(NSString *)upperNote
+{
+    //this block will be just simultaneous
+    if (self.mainPageSettings.playSimultaneousOnly
+        || self.mainPageSettings.playSimultaneousThenSequential
+        || (self.mainPageSettings.playRandomSequentialOrSimultaneous && !self.randomSeqBrkn) )
+    {
+        if (!self.killingPlayers)
+        {
+            [self playSimultaneous];
+        }
+    }
+
+    if (self.mainPageSettings.playSimultaneousThenSequential) {
+        if (!self.killingPlayers)
+        {
+            [self performSelector:self.selectParseSequential
+                       withObject:nil
+                       afterDelay:self.timeBetweenIntervals - 0.5];
+        }
+    }
+    
+    if (self.mainPageSettings.playSequentialThenSimultaneous) {
+        if (!self.killingPlayers)
+        {
+            [self parseSequential];
+        }
+        
+        if (!self.killingPlayers)
+        {
+            NSTimeInterval doubleLength = self.timeBetweenIntervals;
+            if (self.mainPageSettings.breakDownThenUp || self.mainPageSettings.breakUpThenDown) {
+                doubleLength = (doubleLength * 2.0);
+            }
+            [self performSelector:self.selectSimultaneous
+                       withObject:nil
+                       afterDelay:doubleLength];
+        }
+    }
+    
+    if (self.mainPageSettings.playSequentialOnly
+        || (self.mainPageSettings.playRandomSequentialOrSimultaneous && self.randomSeqBrkn))
+    {
+        if (!self.killingPlayers)
+        {
+            [self parseSequential];
+        }
+    }
+}
+
+-(void)parseSequential                                          //this block will handle the different sequential types
+{
+    [player1 stop];
+    [player2 stop];
+    
+    if (self.mainPageSettings.breakUpOnly) {        //low to high
+            if (!self.killingPlayers)
+            {
+                [self playDownUp];
+            }
+        }
+        if (self.mainPageSettings.breakDownOnly) {      //high to low
+            if (!self.killingPlayers)
+            {
+                [self playUpDown];
+            }
+        }
+        if (self.mainPageSettings.breakUpThenDown) {            //lo-hi, then hi-lo
+            if (!self.killingPlayers)
+            {
+                [self playDownUp];
+            }
+            
+            if (!self.killingPlayers)
+            {
+                [self performSelector:self.selectUpDown
+                           withObject:nil
+                           afterDelay:self.timeBetweenIntervals];
+            }
+        }
+        if (self.mainPageSettings.breakDownThenUp) {            //hi-lo, then lo-hi
+            if (!self.killingPlayers)
+            {
+                [self playUpDown];
+            }
+            if (!self.killingPlayers)
+            {
+                [self performSelector:self.selectDownUp
+                           withObject:nil
+                           afterDelay:self.timeBetweenIntervals];
+            }
+        }
+
+        if (self.mainPageSettings.breakRandomUpOrDown) {           //random sequential
+            if (self.randomDirUp) {
+                if (!self.killingPlayers)
+                {
+                    [self playDownUp];
+                }
+            }
+            else
+            {
+                if (!self.killingPlayers)
+                {
+                    [self playUpDown];
+                }
+            }
+        }
 }
 ///////////////////////////////////////////
 
 - (void)displayAnswer:(NSInteger)buttonSelected
 {
-    NSString *intervalName = [self.anInterval intervalNumberToName:buttonSelected nameStyle:NO];//self.mainPageSettings.abbreviatedNameStyle];
-    
+    [self killPlayers];
+    [self.playIntervalButton setTitle:@"PLAY" forState:UIControlStateNormal];
+    NSString *intervalName = [self.anInterval intervalNumberToName:buttonSelected nameStyle:NO];
     NSString *correctString1 = @"CORRECT";
     NSString *correctString2 = @"\n";
     NSString *correctString3 = [correctString2 stringByAppendingString:intervalName];
@@ -350,10 +564,9 @@
             self.response.textColor = [UIColor blackColor];
             self.response.text = incorrectString4;
         }
-        
-        [UIView animateWithDuration:1.5
+         [UIView animateWithDuration:1.0
                               delay:0.0
-             usingSpringWithDamping:0.5
+             usingSpringWithDamping:0.25
               initialSpringVelocity:0
                             options:0
                          animations:^{
@@ -361,20 +574,21 @@
                              self.response.frame = frame;
                          }
                          completion:^(BOOL finished){[UIView animateWithDuration:1.0
-                                                                           delay:0.75
+                                                                           delay:0.5
                                                           usingSpringWithDamping:1.0
                                                            initialSpringVelocity:0.5
                                                                          options:0
                                                                       animations:^{
-                                                                          CGRect frame = CGRectMake(centeredOriginX, (self.view.frame.size.height + 200), frameWidth, frameHeight);
+                                                                          CGRect frame = CGRectMake(centeredOriginX, (self.view.frame.size.height + 400), frameWidth, frameHeight);
                                                                           self.response.frame = frame;
-                                                                      }
-                        completion:NULL];}
+                                                                                }
+                                                                      completion:NULL];
+                                                    }
          ];
     }
+    
+    
 }
-
-
 
 - (IBAction)minor2nd:(id)sender {
     if (self.anInterval) {
@@ -448,86 +662,23 @@
     }
 }
 
-
-- (void)parseSettings:(NSString *)lowerNote nextTone:(NSString *)upperNote
+-(void)answersEnableDisable;
 {
-    NSInteger randomSeqBrkn = arc4random_uniform(2);  //returns 1 (sequential/broken) or 0 (simultaneous)
-    NSLog(@"randomBroken:%ld", (long)randomSeqBrkn);
-    
-    if (self.mainPageSettings.playSimultaneousOnly              //this block will be just simultaneous
-        || self.mainPageSettings.playSimultaneousThenSequential
-        || (self.mainPageSettings.playRandomSequentialOrSimultaneous && !randomSeqBrkn) )
-    {
-        NSLog(@"PAR simult1 block");
-        [self playTones:lowerNote secondTone:upperNote playBroken:NO];
-    }
-    
-    if (self.mainPageSettings.playSimultaneousThenSequential) {
-        sleep(2);
-    }
-    
-    
-    if (self.mainPageSettings.playSequentialOnly   //this block will handle the different sequential types, followed by optional simultaneous
-        || self.mainPageSettings.playSequentialThenSimultaneous
-        || self.mainPageSettings.playSimultaneousThenSequential
-        || (self.mainPageSettings.playRandomSequentialOrSimultaneous && randomSeqBrkn))
-    {
-        NSLog(@"PAR brkn/seq block");
-        if (self.mainPageSettings.breakUpOnly) {
-            NSLog(@"low to high");
-            [self playTones:lowerNote secondTone:upperNote playBroken:YES];   //low to high
-        }
-        if (self.mainPageSettings.breakDownOnly) {
-            NSLog(@"high to low");
-            [self playTones:upperNote secondTone:lowerNote playBroken:YES];   //high to low
-        }
-        if (self.mainPageSettings.breakUpThenDown) {
-            NSLog(@"lo-hi then hi-lo");
-            [self playTones:lowerNote secondTone:upperNote playBroken:YES];   //lo-hi, then hi-lo
-            sleep(2);
-            if (self.playersDone) {
-                [self playTones:upperNote secondTone:lowerNote playBroken:YES];
-            }
-        }
-        if (self.mainPageSettings.breakDownThenUp) {
-            NSLog(@"hi-lo then lo-hi");
-            [self playTones:upperNote secondTone:lowerNote playBroken:YES];  //hi-lo, then lo-hi
-            sleep(2);
-            if (self.playersDone) {
-                [self playTones:lowerNote secondTone:upperNote playBroken:YES];
-            }
-        }
-        
-        if (self.mainPageSettings.breakRandomUpOrDown) {                             //random sequential
-            NSInteger randomDirUp = arc4random_uniform(2);  //returns 0 or 1
-            NSLog(@"in randomUpDown block, up = %ld", (long)randomDirUp);
-            if (randomDirUp) {
-                NSLog(@"randomly parsed low to high");
-                [self playTones:lowerNote secondTone:upperNote playBroken:YES];
-            }
-            else
-            {
-                NSLog(@"randomly parsed high to low");
-                [self playTones:upperNote secondTone:lowerNote playBroken:YES];
-            }
-        }
-        
-        if (self.mainPageSettings.playSequentialThenSimultaneous) {          //this is 'thenSimultaneous' after sequential....
-            NSLog(@"PAR sequ then simul");
-            sleep(2);
-            [self playTones:lowerNote secondTone:upperNote playBroken:NO];
-        }
-    }
+    self.min2button.enabled = self.answersEnabled;
+    self.maj2button.enabled = self.answersEnabled;
+    self.min3button.enabled = self.answersEnabled;
+    self.maj3button.enabled = self.answersEnabled;
+    self.p4button.enabled = self.answersEnabled;
+    self.triToneButton.enabled = self.answersEnabled;
+    self.p5button.enabled = self.answersEnabled;
+    self.min6button.enabled = self.answersEnabled;
+    self.maj6button.enabled = self.answersEnabled;
+    self.min7button.enabled = self.answersEnabled;
+    self.maj7button.enabled = self.answersEnabled;
+    self.octaveButton.enabled = self.answersEnabled;
 }
 
 @end
-
-// this was created by default by Xcode, but not needed?
-//- (void)didReceiveMemoryWarning {
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
-
 
 
 

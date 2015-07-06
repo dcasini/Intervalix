@@ -14,7 +14,7 @@
 {
     NSString *path = [self itemArchivePath];
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]){
-    self = [NSKeyedUnarchiver unarchiveObjectWithFile:path];      //comment this line to reset?
+    self = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     }
     else
         self = [self initToDefaults];
@@ -41,11 +41,6 @@
     
     self.answerStyleAlert = NO;
     self.answerStyleLabel = YES;
-    
-    self.playIncorrectAnswer = NO;
-    self.playCorrectAnswer  = NO;
-    self.playBothAnswer = NO;
-    self.playNoAnswer = YES;
         
     self.displayWelcomeMessage = YES;
     }
@@ -74,11 +69,6 @@
     [aCoder encodeBool:self.answerStyleAlert  forKey:@"answerStyleAlert"];
     [aCoder encodeBool:self.answerStyleLabel  forKey:@"answerStyleLabel"];
     
-    [aCoder encodeBool:self.playIncorrectAnswer  forKey:@"playIncorrectAnswer"];
-    [aCoder encodeBool:self.playCorrectAnswer  forKey:@"playCorrectAnswer"];
-    [aCoder encodeBool:self.playBothAnswer  forKey:@"playBothAnswer"];
-    [aCoder encodeBool:self.playNoAnswer  forKey:@"playNoAnswer"];
-    
     [aCoder encodeBool:self.displayWelcomeMessage forKey:@"displayWelcomeMessage"];
     
 }
@@ -104,12 +94,7 @@
         
         self.answerStyleAlert = [aDecoder decodeBoolForKey:@"answerStyleAlert"];
         self.answerStyleLabel = [aDecoder decodeBoolForKey:@"answerStyleLabel"];
-        
-        self.playIncorrectAnswer = [aDecoder decodeBoolForKey:@"playIncorrectAnswer"];
-        self.playCorrectAnswer  = [aDecoder decodeBoolForKey:@"playCorrectAnswer"];
-        self.playBothAnswer = [aDecoder decodeBoolForKey:@"playBothAnswer"];
-        self.playNoAnswer = [aDecoder decodeBoolForKey:@"playNoAnswer"];
-        
+             
         self.displayWelcomeMessage = [aDecoder decodeBoolForKey:@"displayWelcomeMessage"];
         
     }

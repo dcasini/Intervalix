@@ -7,7 +7,6 @@
 //
 
 #import "OptionsViewController.h"
-//#import "MainScreenViewController.h"
 
 @interface OptionsViewController ()
 
@@ -158,6 +157,9 @@ heightForHeaderInSection:(NSInteger)section
             case 4:
                 aCell = [aCell initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"defaultCell"];
                 aCell.textLabel.text = @"Random Seq. or Sim.";
+                if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+                    aCell.textLabel.text = @"Random Sequential or Simultaneous";
+                }
                 aCell.detailTextLabel.text = @"default";
                 if (self.optionsPageSettings.playRandomSequentialOrSimultaneous) {
                     aCell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -396,7 +398,7 @@ heightForHeaderInSection:(NSInteger)section
         self.previousCheckS3 = self.checkedRowS3;
     }
     
-    if (indexPath.section == 4) {       // no check marks needed for the Etc section....
+    if (indexPath.section == 4) {       // no check marks needed for the Support section....
         if (indexPath.row == 0) {
             [self displayInformationView];
         }
@@ -543,7 +545,6 @@ heightForHeaderInSection:(NSInteger)section
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     self.optionsPageSettings = [[globalSettingsObject alloc]init];  //it will call initWithCoder to restore prior settings
     
     [self.optionsTableView registerClass:[UITableViewCell class]
@@ -556,7 +557,6 @@ heightForHeaderInSection:(NSInteger)section
 //////////////////////////////////////////////
 
 - (IBAction)doneButton:(id)sender {
-    //[self.optionsPageSettings saveChanges];                                 //saving even if no selection
     self.myPresenter.mainPageSettings = self.optionsPageSettings;           //main page needs to know the current settings
     [self.myPresenter displayNameStyle];
     

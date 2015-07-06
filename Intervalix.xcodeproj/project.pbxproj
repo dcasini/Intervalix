@@ -17,7 +17,6 @@
 		D24ABAEA1AEF4D7900F4A5E0 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24ABAE81AEF4D7900F4A5E0 /* OptionsViewController.m */; };
 		D24ABAEB1AEF4D7900F4A5E0 /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24ABAE91AEF4D7900F4A5E0 /* OptionsViewController.xib */; };
 		D29E63F81AF1971E00C0B47C /* globalSettingsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D29E63F71AF1971E00C0B47C /* globalSettingsObject.m */; };
-		D2B12DCE1AF91DB300B2DE7F /* customButton1.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B12DCD1AF91DB300B2DE7F /* customButton1.m */; };
 		D2B12DD11AF91F9000B2DE7F /* IntervalClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B12DD01AF91F9000B2DE7F /* IntervalClass.m */; };
 		D2B12DED1AF9225700B2DE7F /* 52_E_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DD31AF9225700B2DE7F /* 52_E_2.mp3 */; };
 		D2B12DEE1AF9225700B2DE7F /* 53_F_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DD41AF9225700B2DE7F /* 53_F_2.mp3 */; };
@@ -76,8 +75,6 @@
 		D24ABAE91AEF4D7900F4A5E0 /* OptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionsViewController.xib; sourceTree = "<group>"; };
 		D29E63F61AF1971E00C0B47C /* globalSettingsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globalSettingsObject.h; sourceTree = "<group>"; };
 		D29E63F71AF1971E00C0B47C /* globalSettingsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = globalSettingsObject.m; sourceTree = "<group>"; };
-		D2B12DCC1AF91DB300B2DE7F /* customButton1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customButton1.h; sourceTree = "<group>"; };
-		D2B12DCD1AF91DB300B2DE7F /* customButton1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customButton1.m; sourceTree = "<group>"; };
 		D2B12DCF1AF91F9000B2DE7F /* IntervalClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntervalClass.h; sourceTree = "<group>"; };
 		D2B12DD01AF91F9000B2DE7F /* IntervalClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntervalClass.m; sourceTree = "<group>"; };
 		D2B12DD31AF9225700B2DE7F /* 52_E_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 52_E_2.mp3; sourceTree = "<group>"; };
@@ -160,8 +157,6 @@
 				D24ABAE91AEF4D7900F4A5E0 /* OptionsViewController.xib */,
 				D29E63F61AF1971E00C0B47C /* globalSettingsObject.h */,
 				D29E63F71AF1971E00C0B47C /* globalSettingsObject.m */,
-				D2B12DCC1AF91DB300B2DE7F /* customButton1.h */,
-				D2B12DCD1AF91DB300B2DE7F /* customButton1.m */,
 				D24ABAC91AEF4B7500F4A5E0 /* Images.xcassets */,
 				D24ABACB1AEF4B7500F4A5E0 /* LaunchScreen.xib */,
 				D24ABABC1AEF4B7500F4A5E0 /* Supporting Files */,
@@ -272,7 +267,7 @@
 		D24ABAB11AEF4B7400F4A5E0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Dave Casini";
 				TargetAttributes = {
 					D24ABAB81AEF4B7500F4A5E0 = {
@@ -356,7 +351,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B12DCE1AF91DB300B2DE7F /* customButton1.m in Sources */,
 				D29E63F81AF1971E00C0B47C /* globalSettingsObject.m in Sources */,
 				D24ABAE51AEF4C8A00F4A5E0 /* MainScreenViewController.m in Sources */,
 				D2B12DD11AF91F9000B2DE7F /* IntervalClass.m in Sources */,
@@ -457,7 +451,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -468,6 +462,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -495,6 +490,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Intervalix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

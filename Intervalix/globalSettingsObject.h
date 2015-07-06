@@ -24,6 +24,7 @@
 @property (nonatomic) BOOL breakUpThenDown;
 @property (nonatomic) BOOL breakRandomUpOrDown;
 
+//only one of these 2 will be true
 @property (nonatomic) BOOL fullNameStyle;
 @property (nonatomic) BOOL abbreviatedNameStyle;
 
@@ -31,21 +32,11 @@
 @property (nonatomic) BOOL answerStyleAlert; 
 @property (nonatomic) BOOL answerStyleLabel;
 
-//only one of these 4 will be true
-@property (nonatomic) BOOL playIncorrectAnswer;
-@property (nonatomic) BOOL playCorrectAnswer;
-@property (nonatomic) BOOL playBothAnswer;
-@property (nonatomic) BOOL playNoAnswer;
-
 @property (nonatomic) BOOL displayWelcomeMessage;
 
 @property (nonatomic) BOOL applicationJustOpened;
 
 - (BOOL)saveChanges;
-
-//something like this maybe used later for 'parsed interval' ??
-//@property (nonatomic) BOOL breakUP;
-//@property (nonatomic) BOOL breakDOWN;
 
 - (instancetype)initToDefaults;
 

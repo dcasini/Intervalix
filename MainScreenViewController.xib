@@ -280,7 +280,15 @@
                     <state key="normal" title="PLAY">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" backgroundImage="circleOnly"/>
+                    <state key="disabled">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="131" y="140" width="139" height="139"/>
                     </variation>
@@ -429,11 +437,10 @@
                     <exclude reference="Wau-X9-99A"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="845" y="154"/>
+            <point key="canvasLocation" x="145" y="187"/>
         </view>
     </objects>
     <resources>
-        <image name="circleOnly" width="200" height="200"/>
         <image name="whiteSquare" width="400" height="400"/>
     </resources>
 </document>

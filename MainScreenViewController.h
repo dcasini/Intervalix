@@ -21,4 +21,9 @@
 @property (strong) AVAudioPlayer* player1;
 @property (strong) AVAudioPlayer* player2;
 
+- (IBAction)playInterval:(id)sender;
+- (IBAction)repeatInterval:(id)sender;
+
+-(void)killPlayers;
+
 @end

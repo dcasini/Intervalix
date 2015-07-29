@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Intervalix WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Intervalix.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>D24ABAD11AEF4B7500F4A5E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D29FAB0B1B5F52CC004CF2DC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

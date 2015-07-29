@@ -17,6 +17,12 @@
 		D24ABAEA1AEF4D7900F4A5E0 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24ABAE81AEF4D7900F4A5E0 /* OptionsViewController.m */; };
 		D24ABAEB1AEF4D7900F4A5E0 /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D24ABAE91AEF4D7900F4A5E0 /* OptionsViewController.xib */; };
 		D29E63F81AF1971E00C0B47C /* globalSettingsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D29E63F71AF1971E00C0B47C /* globalSettingsObject.m */; };
+		D29FAB071B5F52CC004CF2DC /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = D29FAB061B5F52CC004CF2DC /* InterfaceController.m */; };
+		D29FAB091B5F52CC004CF2DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D29FAB081B5F52CC004CF2DC /* Images.xcassets */; };
+		D29FAB0D1B5F52CC004CF2DC /* Intervalix WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = D29FAB0C1B5F52CC004CF2DC /* Intervalix WatchKit App.app */; };
+		D29FAB151B5F52CC004CF2DC /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D29FAB131B5F52CC004CF2DC /* Interface.storyboard */; };
+		D29FAB171B5F52CC004CF2DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D29FAB161B5F52CC004CF2DC /* Images.xcassets */; };
+		D29FAB1A1B5F52CC004CF2DC /* Intervalix WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D29FAB011B5F52CC004CF2DC /* Intervalix WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D2B12DD11AF91F9000B2DE7F /* IntervalClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B12DD01AF91F9000B2DE7F /* IntervalClass.m */; };
 		D2B12DED1AF9225700B2DE7F /* 52_E_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DD31AF9225700B2DE7F /* 52_E_2.mp3 */; };
 		D2B12DEE1AF9225700B2DE7F /* 53_F_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2B12DD41AF9225700B2DE7F /* 53_F_2.mp3 */; };
@@ -54,7 +60,35 @@
 			remoteGlobalIDString = D24ABAB81AEF4B7500F4A5E0;
 			remoteInfo = Intervalix;
 		};
+		D29FAB0E1B5F52CC004CF2DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D24ABAB11AEF4B7400F4A5E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D29FAB0B1B5F52CC004CF2DC;
+			remoteInfo = "Intervalix WatchKit App";
+		};
+		D29FAB181B5F52CC004CF2DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D24ABAB11AEF4B7400F4A5E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D29FAB001B5F52CC004CF2DC;
+			remoteInfo = "Intervalix WatchKit Extension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D29FAB211B5F52CD004CF2DC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D29FAB1A1B5F52CC004CF2DC /* Intervalix WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D24ABAB91AEF4B7500F4A5E0 /* Intervalix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intervalix.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +109,15 @@
 		D24ABAE91AEF4D7900F4A5E0 /* OptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionsViewController.xib; sourceTree = "<group>"; };
 		D29E63F61AF1971E00C0B47C /* globalSettingsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globalSettingsObject.h; sourceTree = "<group>"; };
 		D29E63F71AF1971E00C0B47C /* globalSettingsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = globalSettingsObject.m; sourceTree = "<group>"; };
+		D29FAB011B5F52CC004CF2DC /* Intervalix WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Intervalix WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D29FAB041B5F52CC004CF2DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D29FAB051B5F52CC004CF2DC /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		D29FAB061B5F52CC004CF2DC /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		D29FAB081B5F52CC004CF2DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D29FAB0C1B5F52CC004CF2DC /* Intervalix WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Intervalix WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D29FAB121B5F52CC004CF2DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D29FAB141B5F52CC004CF2DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		D29FAB161B5F52CC004CF2DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D2B12DCF1AF91F9000B2DE7F /* IntervalClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntervalClass.h; sourceTree = "<group>"; };
 		D2B12DD01AF91F9000B2DE7F /* IntervalClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntervalClass.m; sourceTree = "<group>"; };
 		D2B12DD31AF9225700B2DE7F /* 52_E_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 52_E_2.mp3; sourceTree = "<group>"; };
@@ -120,6 +163,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D29FAAFE1B5F52CC004CF2DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -128,6 +178,8 @@
 			children = (
 				D24ABABB1AEF4B7500F4A5E0 /* Intervalix */,
 				D24ABAD51AEF4B7500F4A5E0 /* IntervalixTests */,
+				D29FAB021B5F52CC004CF2DC /* Intervalix WatchKit Extension */,
+				D29FAB101B5F52CC004CF2DC /* Intervalix WatchKit App */,
 				D24ABABA1AEF4B7500F4A5E0 /* Products */,
 				D2B12DD21AF9225700B2DE7F /* Notes */,
 			);
@@ -138,6 +190,8 @@
 			children = (
 				D24ABAB91AEF4B7500F4A5E0 /* Intervalix.app */,
 				D24ABAD21AEF4B7500F4A5E0 /* IntervalixTests.xctest */,
+				D29FAB011B5F52CC004CF2DC /* Intervalix WatchKit Extension.appex */,
+				D29FAB0C1B5F52CC004CF2DC /* Intervalix WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,6 +244,43 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D29FAB021B5F52CC004CF2DC /* Intervalix WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D29FAB051B5F52CC004CF2DC /* InterfaceController.h */,
+				D29FAB061B5F52CC004CF2DC /* InterfaceController.m */,
+				D29FAB081B5F52CC004CF2DC /* Images.xcassets */,
+				D29FAB031B5F52CC004CF2DC /* Supporting Files */,
+			);
+			path = "Intervalix WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		D29FAB031B5F52CC004CF2DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D29FAB041B5F52CC004CF2DC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D29FAB101B5F52CC004CF2DC /* Intervalix WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				D29FAB131B5F52CC004CF2DC /* Interface.storyboard */,
+				D29FAB161B5F52CC004CF2DC /* Images.xcassets */,
+				D29FAB111B5F52CC004CF2DC /* Supporting Files */,
+			);
+			path = "Intervalix WatchKit App";
+			sourceTree = "<group>";
+		};
+		D29FAB111B5F52CC004CF2DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D29FAB121B5F52CC004CF2DC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		D2B12DD21AF9225700B2DE7F /* Notes */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,10 +324,12 @@
 				D24ABAB51AEF4B7500F4A5E0 /* Sources */,
 				D24ABAB61AEF4B7500F4A5E0 /* Frameworks */,
 				D24ABAB71AEF4B7500F4A5E0 /* Resources */,
+				D29FAB211B5F52CD004CF2DC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D29FAB191B5F52CC004CF2DC /* PBXTargetDependency */,
 			);
 			name = Intervalix;
 			productName = Intervalix;
@@ -261,6 +354,39 @@
 			productReference = D24ABAD21AEF4B7500F4A5E0 /* IntervalixTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D29FAB001B5F52CC004CF2DC /* Intervalix WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D29FAB201B5F52CD004CF2DC /* Build configuration list for PBXNativeTarget "Intervalix WatchKit Extension" */;
+			buildPhases = (
+				D29FAAFD1B5F52CC004CF2DC /* Sources */,
+				D29FAAFE1B5F52CC004CF2DC /* Frameworks */,
+				D29FAAFF1B5F52CC004CF2DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D29FAB0F1B5F52CC004CF2DC /* PBXTargetDependency */,
+			);
+			name = "Intervalix WatchKit Extension";
+			productName = "Intervalix WatchKit Extension";
+			productReference = D29FAB011B5F52CC004CF2DC /* Intervalix WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		D29FAB0B1B5F52CC004CF2DC /* Intervalix WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D29FAB1F1B5F52CD004CF2DC /* Build configuration list for PBXNativeTarget "Intervalix WatchKit App" */;
+			buildPhases = (
+				D29FAB0A1B5F52CC004CF2DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Intervalix WatchKit App";
+			productName = "Intervalix WatchKit App";
+			productReference = D29FAB0C1B5F52CC004CF2DC /* Intervalix WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -277,6 +403,14 @@
 					D24ABAD11AEF4B7500F4A5E0 = {
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = D24ABAB81AEF4B7500F4A5E0;
+					};
+					D29FAB001B5F52CC004CF2DC = {
+						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 74S52UL74H;
+					};
+					D29FAB0B1B5F52CC004CF2DC = {
+						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 74S52UL74H;
 					};
 				};
 			};
@@ -295,6 +429,8 @@
 			targets = (
 				D24ABAB81AEF4B7500F4A5E0 /* Intervalix */,
 				D24ABAD11AEF4B7500F4A5E0 /* IntervalixTests */,
+				D29FAB001B5F52CC004CF2DC /* Intervalix WatchKit Extension */,
+				D29FAB0B1B5F52CC004CF2DC /* Intervalix WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -344,6 +480,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D29FAAFF1B5F52CC004CF2DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D29FAB0D1B5F52CC004CF2DC /* Intervalix WatchKit App.app in Resources */,
+				D29FAB091B5F52CC004CF2DC /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D29FAB0A1B5F52CC004CF2DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D29FAB151B5F52CC004CF2DC /* Interface.storyboard in Resources */,
+				D29FAB171B5F52CC004CF2DC /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -368,6 +522,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D29FAAFD1B5F52CC004CF2DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D29FAB071B5F52CC004CF2DC /* InterfaceController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -375,6 +537,16 @@
 			isa = PBXTargetDependency;
 			target = D24ABAB81AEF4B7500F4A5E0 /* Intervalix */;
 			targetProxy = D24ABAD31AEF4B7500F4A5E0 /* PBXContainerItemProxy */;
+		};
+		D29FAB0F1B5F52CC004CF2DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D29FAB0B1B5F52CC004CF2DC /* Intervalix WatchKit App */;
+			targetProxy = D29FAB0E1B5F52CC004CF2DC /* PBXContainerItemProxy */;
+		};
+		D29FAB191B5F52CC004CF2DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D29FAB001B5F52CC004CF2DC /* Intervalix WatchKit Extension */;
+			targetProxy = D29FAB181B5F52CC004CF2DC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -385,6 +557,14 @@
 				D24ABACC1AEF4B7500F4A5E0 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		D29FAB131B5F52CC004CF2DC /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D29FAB141B5F52CC004CF2DC /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -424,7 +604,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -460,7 +640,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -476,6 +656,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Intervalix/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -489,6 +670,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Intervalix/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -530,6 +712,84 @@
 			};
 			name = Release;
 		};
+		D29FAB1B1B5F52CD004CF2DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Intervalix WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D29FAB1C1B5F52CD004CF2DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Intervalix WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D29FAB1D1B5F52CD004CF2DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = Intervalix_WatchKit_Extension;
+				INFOPLIST_FILE = "Intervalix WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		D29FAB1E1B5F52CD004CF2DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IBSC_MODULE = Intervalix_WatchKit_Extension;
+				INFOPLIST_FILE = "Intervalix WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -556,6 +816,24 @@
 			buildConfigurations = (
 				D24ABAE01AEF4B7500F4A5E0 /* Debug */,
 				D24ABAE11AEF4B7500F4A5E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D29FAB1F1B5F52CD004CF2DC /* Build configuration list for PBXNativeTarget "Intervalix WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D29FAB1D1B5F52CD004CF2DC /* Debug */,
+				D29FAB1E1B5F52CD004CF2DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D29FAB201B5F52CD004CF2DC /* Build configuration list for PBXNativeTarget "Intervalix WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D29FAB1B1B5F52CD004CF2DC /* Debug */,
+				D29FAB1C1B5F52CD004CF2DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

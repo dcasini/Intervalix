@@ -11,6 +11,10 @@
 
 @interface AppDelegate ()
 
+@property MainScreenViewController *mainView;
+
+@property NSInteger currentInterval;
+
 @end
 
 @implementation AppDelegate
@@ -21,17 +25,96 @@
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     
-    MainScreenViewController *mainView = [[MainScreenViewController alloc]init];
-    self.window.rootViewController = mainView;
+   // MainScreenViewController *mainView = [[MainScreenViewController alloc]init];
+    self.mainView = [[MainScreenViewController alloc]init];
+    self.window.rootViewController = self.mainView;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    mainView.mainPageSettings.applicationJustOpened = YES;  //used in MainScreen/ViewDidLoad
+    self.mainView.mainPageSettings.applicationJustOpened = YES;  //used in MainScreen/ViewDidLoad
     //this is used to be sure welcome screen only appears at startup (if enabled)
     //and does not reappear when coming back from options page
     
     return YES;
+}
+
+
+- (void)application:(UIApplication *)application
+handleWatchKitExtensionRequest:(NSDictionary *)userInfo
+              reply:(void (^)(NSDictionary *replyInfo))reply
+{
+    NSString *buttonName = [userInfo objectForKey:@"buttonName"];
+    
+    if ([buttonName isEqual: @"playButtonFromWatch"])
+    {
+        [self.mainView playInterval:self];
+    }
+    
+    if ([buttonName isEqual: @"repeatButtonFromWatch"])
+    {
+        [self.mainView repeatInterval:self];
+    }
+    
+    if ([buttonName isEqual: @"answerButtonFromWatch"])
+    {
+        [self.mainView killPlayers];
+    }
+    
+    self.currentInterval = self.mainView.anInterval.intervalNumber;
+    NSString *intAsString = [self intToString:(int)self.currentInterval];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:intAsString,@"intervalNumber", nil];
+    reply(dict);
+}
+
+- (NSString *)intToString:(int)intIn
+{
+    NSString *returnValue;
+    switch (intIn) {
+        case 1:
+            returnValue = @"one";
+            break;
+        case 2:
+            returnValue = @"two";
+            break;
+        case 3:
+            returnValue = @"three";
+            break;
+        case 4:
+            returnValue = @"four";
+            break;
+        case 5:
+            returnValue = @"five";
+            break;
+        case 6:
+            returnValue = @"six";
+            break;
+        case 7:
+            returnValue = @"seven";
+            break;
+        case 8:
+            returnValue = @"eight";
+            break;
+        case 9:
+            returnValue = @"nine";
+            break;
+        case 10:
+            returnValue = @"ten";
+            break;
+        case 11:
+            returnValue = @"eleven";
+            break;
+        case 12:
+            returnValue = @"twelve";
+            break;
+            
+        default:
+            returnValue = @"ERROR - invalid int to string";
+            break;
+    }
+    
+    
+    return returnValue;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

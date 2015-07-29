@@ -588,7 +588,7 @@ heightForHeaderInSection:(NSInteger)section
 
 - (void)displayInformationView {
     
-    NSString *infoMessage = @"Tap ‘Play’ on the Main Screen to hear an interval, then tap the button with the name of the interval around the perimeter to see if you identified it correctly.\n\nThe Options page allows you to configure how intervals are played, and how names or answers are displayed.\n\nMore information at:";
+    NSString *infoMessage = @"\nTurn the Ringer or Side Switch ON.\nTap ‘Play’ on Main Screen to hear an interval, then tap the button with interval name to see if you identified it correctly.\n\nThe Options page allows you to configure how intervals are played, and how names or answers are displayed.\n\nMore information at:";
     
     UIAlertController *InfoView = [UIAlertController alertControllerWithTitle:@"INTERVALIX INSTRUCTIONS:"
                                                                           message:infoMessage

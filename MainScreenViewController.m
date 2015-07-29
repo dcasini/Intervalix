@@ -14,7 +14,7 @@
 
 - (IBAction)toOptions:(id)sender;
 
-- (IBAction)playInterval:(id)sender;
+//- (IBAction)playInterval:(id)sender;
 
 - (IBAction)repeatInterval:(id)sender;
 
@@ -248,7 +248,9 @@
 
 - (void)displayWelcome {
     
-    NSString *welcomeMessage = @"Be sure you have adjusted the volume on your device.\n\nInstructions and configuration are available under Options.\n\n'Reset to Defaults' under Options will reenable this message at startup.";
+//    NSString *welcomeMessage = @"Be sure you have adjusted the volume on your device.\n\nInstructions and configuration are available under Options.\n\n'Reset to Defaults' under Options will reenable this message at startup.";
+    
+    NSString *welcomeMessage = @"\nTurn Ringer or Side Switch ON.\nAdjust volume on your device.\n\nInstructions and configuration are available under Options.\n\n'Reset to Defaults' under Options will reenable this message at startup.";
     UIAlertController *welcomeAlert = [UIAlertController alertControllerWithTitle:@"Welcome to Intervalix"
                                                                    message:welcomeMessage
                                                             preferredStyle:UIAlertControllerStyleAlert];
